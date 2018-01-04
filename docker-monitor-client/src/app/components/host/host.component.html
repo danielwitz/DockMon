@@ -1,0 +1,14 @@
+<div class="col right ph-l b-m no-shrink">
+  <span class="fa-18x bold">{{host.name}}</span>
+  <span class="fa-12x sec t-s"></span>
+</div>
+<div class="scroll">
+  <dm-container #cnt class="container col strc p-s"
+                *ngFor="let container of host.containers | sortByField:'name'; trackBy:trackByContainerId"
+                [container]="container"
+                [host]="host.name"
+                [class.low-op]="container.state|stateToStopped"
+                (containerAction)="dispatchContainerAction($event)"
+                (selectContainer)="dispatchSelectContainer($event)">
+  </dm-container>
+</div>

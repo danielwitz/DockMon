@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "start": "node index",
+    "hard": "INTERVAL=100 node tester",
+    "mid": "INTERVAL=500 node tester",
+    "easy": "INTERVAL=1000 node tester"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "faker": "^4.1.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "winston": "next"
+  }
+}

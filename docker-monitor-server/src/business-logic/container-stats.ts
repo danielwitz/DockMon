@@ -4,16 +4,19 @@ import {HostData} from '../interface/host-data';
 
 let fetch = require('node-fetch');
 
-const hosts: string[] = process.env.DM_HOSTS ? JSON.parse(process.env.DM_HOSTS) : ['Hosts from configuration'];
-const swarmManagerHost: string = process.env.SWARM_MANAGER ? JSON.parse(process.env.SWARM_MANAGER) : 'Swarm manager from configuration';
-const swarmServicesNames: string[] = process.env.SERVICES_NAMES ? JSON.parse(process.env.SERVICES_NAMES) : ['Swarm services from configuration'];
+// const hosts: string[] = process.env.DM_HOSTS ? JSON.parse(process.env.DM_HOSTS) : ['Hosts from configuration'];
+// const swarmManagerHost: string = process.env.SWARM_MANAGER ? JSON.parse(process.env.SWARM_MANAGER) : 'Swarm manager from configuration';
+// const swarmServicesNames: string[] = process.env.SERVICES_NAMES ? JSON.parse(process.env.SERVICES_NAMES) : ['Swarm services from configuration'];
+const hosts: string[] = ['localhost:2376','First Server', 'Second Server', 'Third Server'];
+const swarmManagerHost: string = '';
+const swarmServicesNames: string[] = [];
 
 export class ContainerStatsBusinessLogic {
 
     static async getDataFromAllHosts(): Promise<HostData[]> {
         let hostsDataPromises: Promise<HostData[]> = Promise.all(hosts.map(host => ContainerStatsBusinessLogic.getAllHostContainersData(host)));
-        let swarmContainersDataPromises: Promise<HostData[]> = this.getAllSwarmContainersData(swarmManagerHost);
-        return [...await hostsDataPromises, ...await swarmContainersDataPromises];
+        // let swarmContainersDataPromises: Promise<HostData[]> = this.getAllSwarmContainersData(swarmManagerHost);
+        return hostsDataPromises;
     }
 
     static async getAllHostContainersData(host): Promise<HostData> {

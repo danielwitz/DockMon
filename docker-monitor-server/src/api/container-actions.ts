@@ -7,15 +7,7 @@ export class ContainerActionsAPI {
         app.post('/actions/stop', ContainerActionsAPI.stopContainer);
         app.post('/actions/start', ContainerActionsAPI.startContainer);
         app.post('/actions/restart', ContainerActionsAPI.restartContainer);
-        app.put('/addHost/', ContainerActionsAPI.addNewHost);
-    }
-
-    static addNewHost(req:express.Request, res:express.Response): void {
-        if (req.body.dnsHostName && req.body.nickname) {
-            ContainerStatsBusinessLogic.addNewHost(req.body.dnsHostName, req.body.nickname);
-        } else {
-            res.send('Error! did not add new host');
-        }
+        app.post('/addHost', ContainerActionsAPI.addNewHost);
     }
 
     static stopContainer(req:express.Request, res:express.Response):void {
@@ -48,7 +40,18 @@ export class ContainerActionsAPI {
         }
     }
 
-    static restartContainer(req:express.Request, res:express.Response):void {
+    static addNewHost(req:express.Request, res:express.Response): void {
+        console.log('heee');
+        console.log(req.body.dnsHostName + ' ' + req.body.nickname);
+        if (req.body.dnsHostName && req.body.nickname) {
+            ContainerStatsBusinessLogic.addNewHost(req.body.dnsHostName, req.body.nickname);
+        } else {
+            console.log('heee1');
+            res.send('Error! did not add new host');
+        }
+    }
+
+    static restartContainer(req:express.Request, res:express.Response): void {
         if (req.body.host && req.body.id) {
             ContainerActionsBusinessLogic.doAction('restart', req.body.host, req.body.id)
                 .then((data) => {

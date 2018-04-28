@@ -31,10 +31,8 @@ export class ContainerStatsBusinessLogic {
     }
 
     static addNewHost(dnsHostName: string, nickname: string): void {
-        console.log(dnsHostName);
-        console.log(nickname);
-        hosts.push(dnsHostName);
-        hostsDic.set(dnsHostName, nickname);
+        hosts.push(dnsHostName + ':2375');
+        hostsDic.set(dnsHostName + ':2375', nickname);
     }
 
     static async getAllHostContainersData(host): Promise<HostData> {

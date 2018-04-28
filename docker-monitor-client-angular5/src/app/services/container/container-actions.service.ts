@@ -16,7 +16,6 @@ export class ContainersActionsService {
   }
 
   doAction(action: string, host: string, id: string): void {
-    console.log(this.serverUrl);
     this.http.post(this.serverUrl + action, {id, host}).subscribe(() =>
       this.containersStatsService.refreshHosts());
   }

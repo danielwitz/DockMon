@@ -6,16 +6,18 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class HostActionsService {
-
   private serverURL;
+  private updateHostUrl;
 
   constructor(private http: HttpClient,
               private configService: ConfigService) {
-      this.serverURL = `${configService.getConfig().host}/addHost/`;
+      this.serverURL = `${configService.getConfig().host}/addHost`;
+      this.updateHostUrl = `${configService.getConfig().host}/stats/getDataFromAllHosts`;
   }
 
   newHost(dnsHostName: string, nickname: string): void {
-    console.log(this.serverURL);
-    this.http.put(this.serverURL, {dnsHostName, nickname});
+    this.http.post(this.serverURL, {dnsHostName, nickname}).subscribe( () =>
+      console.log('done')
+    );
   }
 }

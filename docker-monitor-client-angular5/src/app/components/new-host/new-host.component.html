@@ -1,0 +1,13 @@
+<div style="background-color: antiquewhite">
+  <h1>Add New Host</h1>
+  <div>
+    <label> Enter Your Server Nickname:       </label>
+    <input type="text" [(ngModel)]="nickname">
+  </div>
+  <div>
+    <label>Enter Your Server Public DNS:        </label>
+    <input type="text" [(ngModel)]="dnsHostName">
+  </div>
+  <button (click)="saveHost()" routerLink="">Submit</button>
+</div>
+

@@ -36,3 +36,4 @@ export class SelectContainerService {
   private getLogs(host: string, containerId: string): Observable<Log[]> {
     return this.http.get<Log[]>(`${this.serverUrl}/${host}/${containerId}`);
   }
+}

@@ -1,4 +1,5 @@
 <div class="fcol wrp right up app">
+  <app-nav></app-nav>
     <dm-host class="server t-m l-m col strc grow"
              *ngFor="let host of hosts | async; trackBy:trackByHostName"
              [host]="host"

@@ -29,6 +29,9 @@ import {
   buildReducers,
   buildState
 } from './reducers/build-state-and-reducers-functions';
+import { NavComponent } from './components/nav/nav.component';
+import { NewHostComponent } from './components/new-host/new-host.component';
+import { HostActionsService } from './services/host/host-actions.service';
 
 
 @NgModule({
@@ -46,7 +49,9 @@ import {
     HostsComponent,
     LogLevelToColorPipe,
     StateToRunning,
-    StateToStopped
+    StateToStopped,
+    NavComponent,
+    NewHostComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,8 @@ import {
     ContainersStatsService,
     ContainersActionsService,
     ConfigService,
-    SelectContainerService
+    SelectContainerService,
+    HostActionsService
   ],
   bootstrap: [AppComponent]
 })

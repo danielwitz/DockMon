@@ -7,14 +7,24 @@ let fetch = require('node-fetch');
 // const hosts: string[] = process.env.DM_HOSTS ? JSON.parse(process.env.DM_HOSTS) : ['Hosts from configuration'];
 // const swarmManagerHost: string = process.env.SWARM_MANAGER ? JSON.parse(process.env.SWARM_MANAGER) : 'Swarm manager from configuration';
 // const swarmServicesNames: string[] = process.env.SERVICES_NAMES ? JSON.parse(process.env.SERVICES_NAMES) : ['Swarm services from configuration'];
-const hosts: string[] = ['localhost:2376','First Server', 'Second Server', 'Third Server'];
+
+var hostsDic = new Map();
+hostsDic.set('ec2-18-222-156-26.us-east-2.compute.amazonaws.com:2375', 'Server1');
+hostsDic.set('ec2-18-188-226-134.us-east-2.compute.amazonaws.com:2375','Server2');
+hostsDic.set('ec2-18-188-237-156.us-east-2.compute.amazonaws.com:2375','Server3');
+
+var hosts = ['ec2-18-188-226-134.us-east-2.compute.amazonaws.com:2375',
+             'ec2-18-222-156-26.us-east-2.compute.amazonaws.com:2375',
+             'ec2-18-188-237-156.us-east-2.compute.amazonaws.com:2375'];
+
 const swarmManagerHost: string = '';
 const swarmServicesNames: string[] = [];
 
 export class ContainerStatsBusinessLogic {
-
     static async getDataFromAllHosts(): Promise<HostData[]> {
-        let hostsDataPromises: Promise<HostData[]> = Promise.all(hosts.map(host => ContainerStatsBusinessLogic.getAllHostContainersData(host)));
+        let hostsDataPromises: Promise<HostData[]> = Promise.all(
+            hosts.map(host => ContainerStatsBusinessLogic.getAllHostContainersData(host))
+        );
         // let swarmContainersDataPromises: Promise<HostData[]> = this.getAllSwarmContainersData(swarmManagerHost);
         return hostsDataPromises;
     }
@@ -62,9 +72,11 @@ export class ContainerStatsBusinessLogic {
     private static async buildContainersData(containers, host: string): Promise<HostData> {
         let containerDataPromises: Promise<ContainerData>[] = containers.map(container => ContainerStatsBusinessLogic.buildContainerData(container, host));
         let data: ContainerData[] = await Promise.all(containerDataPromises);
+
         return {
             name: host,
-            containers: data
+            containers: data,
+            nickname: hostsDic.get(host)
         };
     }
 

@@ -1,13 +1,16 @@
-<div class="col right ph-l b-m no-shrink">
-  <b class="fa-18x">Server Nickname: </b>
-  <span class="fa-15x"> {{host.nickname}}</span>
+  <div id="serverTitle">
+    <span id="serverNickname">
+      <b class="fa-18x">Server Nickname: </b>
+  <span class="fa-15x"> {{host.nickname}}</span></span>
+<span id="dnsName">
   <b class="fa-18x">DNS Host Name:</b>
   <span class="fa-15x">{{host.name}}</span>
-  <span class="fa-12x sec t-s"></span>
-</div>
+  </span>
+  </div>
 <div class="scroll">
+
   <dm-container #cnt class="container col strc p-s"
-                *ngFor="let container of host.containers | sortByField:'name'; trackBy:trackByContainerId"
+                *ngFor="let container of host.containers | sortByField:'nickname'; trackBy:trackByContainerId"
                 [container]="container"
                 [host]="host.name"
                 [class.low-op]="container.state|stateToStopped"

@@ -88,6 +88,7 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
   background: var(--color6);
+  background-color: #f1f1f9;
 }
 
 html, body, .scroll {
@@ -111,10 +112,9 @@ dm-hosts, dm-container-logs {
 }
 
 .server {
-  background-color: whitesmoke;
-  color: black;
-  border: 0.1em solid #bdbdbd;
-  border-radius: 0.3em;
+  color: #f1f1f9;
+  background-color: #7781c8;
+  width: 80%;
 }
 
 .server > .scroll {
@@ -344,7 +344,7 @@ dm-hosts, dm-container-logs {
 .up, .right.up, .left.up,
 .col.right, .col.right.up, .col.right.down,
 .col.spc.right, .col.arnd.right {
-  align-items: flex-start;
+  /* align-items: flex-start; */
 }
 
 .down, .right.down, .left.down,
@@ -694,4 +694,38 @@ dm-hosts, dm-container-logs {
 
 .warning {
   background-color: #ffd76d;
+}
+
+app-nav {
+  width: 100%;
+  font-size: 50px;
+  background-color: #393f62;
+}
+
+.nav {
+  background-color: #393f62;
+}
+
+.fa, .fas {
+  font-weight: 900;
+  font-size: 21px;
+  background-color: #969dd3;
+  color: white;
+  padding: 6px;
+  border-radius: 15px;
+  vertical-align: middle;
+}
+
+body > app-root > dm-hosts > div > app-nav > div > a {
+  margin-left: 20px;
+  /* margin: 20px; */
+}
+
+div#serverTitle {
+  height: 40px;
+  padding: 10px 20px;
+}
+
+#dnsName{
+  float: right;
 }

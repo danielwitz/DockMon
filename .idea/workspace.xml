@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="843603bb-9d26-4e01-878b-d87cb027c037" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/container/container-actions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/container/container-actions.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/host/host-actions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/host/host-actions.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-monitor-server/src/api/container-actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docker-monitor-server/src/api/container-actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-monitor-server/src/business-logic/container-stats.ts" beforeDir="false" afterPath="$PROJECT_DIR$/docker-monitor-server/src/business-logic/container-stats.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -109,10 +105,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1370" />
-    <option name="height" value="745" />
+    <option name="x" value="-7" />
+    <option name="y" value="-7" />
+    <option name="width" value="1097" />
+    <option name="height" value="597" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -207,7 +203,7 @@
   <component name="PropertiesComponent">
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/docker-monitor-client-angular5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
@@ -248,7 +244,7 @@
       <workItem from="1524661993589" duration="1516000" />
       <workItem from="1524832146895" duration="16622000" />
       <workItem from="1524916860443" duration="197000" />
-      <workItem from="1524922257531" duration="1745000" />
+      <workItem from="1524922257531" duration="2373000" />
     </task>
     <task id="LOCAL-00001" summary="display hostname and nickname,&#10;add new host option on view and service">
       <created>1524904452214</created>
@@ -271,14 +267,21 @@
       <option name="project" value="LOCAL" />
       <updated>1524922351087</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="display hostname and nickname,&#10;add new host option on view and service">
+      <created>1524929956884</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1524929956884</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20347000" />
+    <option name="totallyTimeSpent" value="20975000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="11" />

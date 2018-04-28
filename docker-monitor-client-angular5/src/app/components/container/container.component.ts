@@ -19,7 +19,7 @@ export class ContainerComponent implements OnChanges {
 
   constructor() {
     this.containerAction = new EventEmitter<ContainerActionData>();
-    this.selectContainer = new EventEmitter<SelectedContainer>()
+    this.selectContainer = new EventEmitter<SelectedContainer>();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {HostActionsService} from '../../services/host/host-actions.service';
 
 @Component({
   selector: 'app-new-host',
@@ -6,16 +7,16 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./new-host.component.css']
 })
 export class NewHostComponent implements OnInit {
-  nickname: string ="";
-  dnsHostName: string= "";
+  nickname = '';
+  dnsHostName = '';
 
-  constructor() {
+  constructor(private hostActionSerivce: HostActionsService) {
   }
 
   ngOnInit() {
   }
 
-  saveHost() {
-
+  addHost() {
+    this.hostActionSerivce.newHost(this.dnsHostName, this.nickname);
   }
 }

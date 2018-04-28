@@ -13,9 +13,10 @@ hostsDic.set('ec2-18-222-156-26.us-east-2.compute.amazonaws.com:2375', 'Server1'
 hostsDic.set('ec2-18-188-226-134.us-east-2.compute.amazonaws.com:2375','Server2');
 hostsDic.set('ec2-18-188-237-156.us-east-2.compute.amazonaws.com:2375','Server3');
 
-var hosts = ['ec2-18-188-226-134.us-east-2.compute.amazonaws.com:2375',
-             'ec2-18-222-156-26.us-east-2.compute.amazonaws.com:2375',
-             'ec2-18-188-237-156.us-east-2.compute.amazonaws.com:2375'];
+var hosts: string[] = [];
+hosts.push('ec2-18-188-226-134.us-east-2.compute.amazonaws.com:2375');
+hosts.push('ec2-18-222-156-26.us-east-2.compute.amazonaws.com:2375');
+hosts.push('ec2-18-188-237-156.us-east-2.compute.amazonaws.com:2375');
 
 const swarmManagerHost: string = '';
 const swarmServicesNames: string[] = [];
@@ -27,6 +28,13 @@ export class ContainerStatsBusinessLogic {
         );
         // let swarmContainersDataPromises: Promise<HostData[]> = this.getAllSwarmContainersData(swarmManagerHost);
         return hostsDataPromises;
+    }
+
+    static addNewHost(dnsHostName: string, nickname: string): void {
+        console.log(dnsHostName);
+        console.log(nickname);
+        hosts.push(dnsHostName);
+        hostsDic.set(dnsHostName, nickname);
     }
 
     static async getAllHostContainersData(host): Promise<HostData> {

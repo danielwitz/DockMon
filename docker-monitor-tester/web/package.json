@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "start": "cd build && node index",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@types/node": "^8.0.0",
+    "@types/sequelize": "^4.27.16",
+    "express": "^4.16.2",
+    "faker": "^4.1.0",
+    "pg": "^7.4.1",
+    "sequelize": "^4.33.4",
+    "typescript": "^2.7.2",
+    "winston": "next"
+  },
+  "license": "MIT"
+}

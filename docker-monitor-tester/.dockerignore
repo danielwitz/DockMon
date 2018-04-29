@@ -1,1 +1,4 @@
-node_modules
+simulator/node_modules
+simulator/build
+web/node_modules
+web/build

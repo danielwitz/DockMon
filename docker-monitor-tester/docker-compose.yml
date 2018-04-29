@@ -1,0 +1,24 @@
+version: '3'
+services:
+  postgres:
+    image: "postgres:alpine"
+    ports:
+      - "5432:5432"
+  web:
+    image: "nicom93/dockmon-tester"
+    environment:
+      port: 8080
+    depends_on:
+      - postgres
+    links:
+      - postgres
+  simulator:
+    image: "nicom93/dockmon-tester-simulator"
+    environment:
+      interval: 500
+      webServerPort: 8080
+    build: simulator
+    depends_on:
+      - web
+    links:
+      - web

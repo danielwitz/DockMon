@@ -5,7 +5,8 @@
              [host]="host"
              [style.order]="host.containers?.length"
              (containerAction)="onContainerAction($event)"
-             (selectContainer)="selectContainer($event)">
+             (selectContainer)="selectContainer($event)"
+             (removeHostAction)="removeHostByName($event)">
     </dm-host>
 </div>
 

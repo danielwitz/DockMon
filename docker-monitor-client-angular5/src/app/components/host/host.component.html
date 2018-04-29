@@ -1,12 +1,16 @@
-  <div id="serverTitle">
+<div id="serverTitle">
     <span id="serverNickname">
       <b class="fa-18x">Server Nickname: </b>
-  <span class="fa-15x"> {{host.nickname}}</span></span>
-<span id="dnsName">
-  <b class="fa-18x">DNS Host Name:</b>
-  <span class="fa-15x">{{host.name}}</span>
+      <span class="fa-15x"> {{host.nickname}}</span>
+    </span>
+  <span id="removeImage">
+    <i class="far fa-trash-alt fa-2x" (click)="removeHost(host.name)"></i>
   </span>
-  </div>
+  <span id="dnsName">
+    <b class="fa-18x">DNS Host Name:</b>
+    <span class="fa-15x">{{host.name}}</span>
+  </span>
+</div>
 <div class="scroll">
 
   <dm-container #cnt class="container col strc p-s"

@@ -9,6 +9,7 @@ import {ContainersActionsService} from '../../services/container/container-actio
 import {Router} from '@angular/router';
 import {SelectedContainer} from '../../interfaces/container/selected-container';
 import {SelectContainerService} from '../../services/container/select-container.service';
+import {HostActionsService} from "../../services/host/host-actions.service";
 
 @Component({
   selector: 'dm-hosts',
@@ -17,9 +18,9 @@ import {SelectContainerService} from '../../services/container/select-container.
 export class HostsComponent {
   hosts: Observable<HostData[]>;
 
-  constructor(private containersStatsService: ContainersStatsService,
-              private containersActionService: ContainersActionsService,
+  constructor(private containersActionService: ContainersActionsService,
               private selectContainerService: SelectContainerService,
+              private hostActionsService: HostActionsService,
               private store: Store<AppState>,
               private router: Router) {
     this.hosts = this.store.select<HostData[]>((state: AppState) => state.hosts);
@@ -31,11 +32,15 @@ export class HostsComponent {
   }
 
   selectContainer(containerToSelect: SelectedContainer) {
-    this.selectContainerService.selectContainer(containerToSelect)
+    this.selectContainerService.selectContainer(containerToSelect);
     this.router.navigate(['/logs', containerToSelect.hostName, containerToSelect.id]);
   }
 
   trackByHostName(index: number, host: HostData): string {
     return host ? host.name : undefined;
+  }
+
+  removeHostByName(hostName: string): void {
+    this.hostActionsService.removeHost(hostName);
   }
 }

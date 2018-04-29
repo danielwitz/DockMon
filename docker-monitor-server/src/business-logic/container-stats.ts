@@ -1,22 +1,12 @@
 import {ContainerUsageStats} from '../interface/container-stats';
 import {ContainerData} from '../interface/container-data';
 import {HostData} from '../interface/host-data';
+import {HostActionsBusinessLogic} from "./host-actions";
 
 let fetch = require('node-fetch');
 
-// const hosts: string[] = process.env.DM_HOSTS ? JSON.parse(process.env.DM_HOSTS) : ['Hosts from configuration'];
 // const swarmManagerHost: string = process.env.SWARM_MANAGER ? JSON.parse(process.env.SWARM_MANAGER) : 'Swarm manager from configuration';
 // const swarmServicesNames: string[] = process.env.SERVICES_NAMES ? JSON.parse(process.env.SERVICES_NAMES) : ['Swarm services from configuration'];
-
-var hostsDic = new Map();
-hostsDic.set('ec2-18-222-156-26.us-east-2.compute.amazonaws.com:2375', 'Server1');
-hostsDic.set('ec2-18-188-226-134.us-east-2.compute.amazonaws.com:2375','Server2');
-hostsDic.set('ec2-18-188-237-156.us-east-2.compute.amazonaws.com:2375','Server3');
-
-var hosts: string[] = [];
-hosts.push('ec2-18-188-226-134.us-east-2.compute.amazonaws.com:2375');
-hosts.push('ec2-18-222-156-26.us-east-2.compute.amazonaws.com:2375');
-hosts.push('ec2-18-188-237-156.us-east-2.compute.amazonaws.com:2375');
 
 const swarmManagerHost: string = '';
 const swarmServicesNames: string[] = [];
@@ -24,25 +14,20 @@ const swarmServicesNames: string[] = [];
 export class ContainerStatsBusinessLogic {
     static async getDataFromAllHosts(): Promise<HostData[]> {
         let hostsDataPromises: Promise<HostData[]> = Promise.all(
-            hosts.map(host => ContainerStatsBusinessLogic.getAllHostContainersData(host))
+            HostActionsBusinessLogic.getHosts().map(host => ContainerStatsBusinessLogic.getAllHostContainersData(host))
         );
         // let swarmContainersDataPromises: Promise<HostData[]> = this.getAllSwarmContainersData(swarmManagerHost);
         return hostsDataPromises;
     }
 
-    static addNewHost(dnsHostName: string, nickname: string): void {
-        hosts.push(dnsHostName + ':2375');
-        hostsDic.set(dnsHostName + ':2375', nickname);
-    }
-
-    static async getAllHostContainersData(host): Promise<HostData> {
+    static async getAllHostContainersData(host: HostData): Promise<HostData> {
         let containers = await this.getAllHostContainers(host);
         return await this.buildContainersData(containers, host);
     }
 
-    static async getAllHostContainers(host): Promise<any> {
+    static async getAllHostContainers(host: HostData): Promise<any> {
         try {
-            return await fetch(`http://${host}/containers/json?all=1`).then(res => res.json());
+            return await fetch(`http://${host.name}/containers/json?all=1`).then(res => res.json());
         } catch (error) {
             return Promise.resolve([]);
         }
@@ -75,15 +60,10 @@ export class ContainerStatsBusinessLogic {
         return swarmServicesNames.some((serviceName) => containerName.indexOf(serviceName) >= 0);
     }
 
-    private static async buildContainersData(containers, host: string): Promise<HostData> {
-        let containerDataPromises: Promise<ContainerData>[] = containers.map(container => ContainerStatsBusinessLogic.buildContainerData(container, host));
-        let data: ContainerData[] = await Promise.all(containerDataPromises);
-
-        return {
-            name: host,
-            containers: data,
-            nickname: hostsDic.get(host)
-        };
+    private static async buildContainersData(containers, host: HostData): Promise<HostData> {
+        let containerDataPromises: Promise<ContainerData>[] = containers.map(container => ContainerStatsBusinessLogic.buildContainerData(container, host.name));
+        host.containers = await Promise.all(containerDataPromises);
+        return host
     }
 
     static async buildContainerData(container: any, host: string): Promise<ContainerData> {

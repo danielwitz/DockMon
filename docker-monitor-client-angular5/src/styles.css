@@ -726,6 +726,13 @@ div#serverTitle {
   padding: 10px 20px;
 }
 
+#removeImage{
+  padding-left: 15px;
+  float: right;
+  cursor:pointer;
+}
+
 #dnsName{
   float: right;
 }
+

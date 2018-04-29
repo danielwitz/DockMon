@@ -1,13 +1,12 @@
-<div style="background-color: antiquewhite">
-  <h1>Add New Host</h1>
-  <div>
-    <label> Enter Your Server Nickname:       </label>
-    <input type="text" [(ngModel)]="nickname">
-  </div>
-  <div>
-    <label>Enter Your Server Public DNS:        </label>
-    <input type="text" [(ngModel)]="dnsHostName">
-  </div>
-  <button (click)="addHost()" routerLink="">Submit</button>
-</div>
+<div>
+  <h1>New Host To Monitor </h1>
+  <div class="container hostParams">
+    <label for="nickname" class="fa-18x">Server Nickname</label>
+    <input type="text" [(ngModel)]="nickname" id="nickname" name="nickname" placeholder="Your Server Nickname .. ">
 
+    <label for="dnsHostName" class="fa-18x">Server DNS Host Name</label>
+    <input type="text" [(ngModel)]="dnsHostName" name="dnsHostName" id="dnsHostName" placeholder="Your Server DNS Host Name .. ">
+
+    <button (click)="addHost()" routerLink="">Add New Server To Monitor</button>
+  </div>
+</div>

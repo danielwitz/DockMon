@@ -1,4 +1,4 @@
-input[type=text] {
+.customInput {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -36,4 +36,22 @@ h1 {
 .hostParams {
   width: 80%;
   margin: 40px auto;
+}
+.errorDNSName {
+  border: 1px solid #ff4d4d;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.errorNickname {
+  border: 1px solid #ff4d4d;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing: border-box;
 }

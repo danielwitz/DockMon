@@ -2,11 +2,14 @@
   <h1>New Host To Monitor </h1>
   <div class="container hostParams">
     <label for="nickname" class="fa-18x">Server Nickname</label>
-    <input type="text" [(ngModel)]="nickname" id="nickname" name="nickname" placeholder="Your Server Nickname .. ">
-
+    <input [class.errorNickname] = "nickInputError"
+           [class.customInput]= "!nickInputError"
+           type="text" [(ngModel)]="nickname" id="nickname" name="nickname" placeholder="Your Server Nickname .. ">
     <label for="dnsHostName" class="fa-18x">Server DNS Host Name</label>
-    <input type="text" [(ngModel)]="dnsHostName" name="dnsHostName" id="dnsHostName" placeholder="Your Server DNS Host Name .. ">
+    <input [class.errorDNSName] = "dnsInputError"
+           [class.customInput]= "!dnsInputError"
+           type="text" [(ngModel)]="dnsHostName" name="dnsHostName" id="dnsHostName" placeholder="Your Server DNS Host Name .. ">
 
-    <button (click)="addHost()" routerLink="">Add New Server To Monitor</button>
+    <button (click)="addHost()">Add New Server To Monitor</button>
   </div>
 </div>

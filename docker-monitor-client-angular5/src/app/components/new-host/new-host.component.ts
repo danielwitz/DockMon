@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, style} from '@angular/core';
 import {HostActionsService} from '../../services/host/host-actions.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-new-host',
@@ -9,14 +10,35 @@ import {HostActionsService} from '../../services/host/host-actions.service';
 export class NewHostComponent implements OnInit {
   nickname = '';
   dnsHostName = '';
+  dnsInputError = false;
+  nickInputError = false;
 
-  constructor(private hostActionSerivce: HostActionsService) {
+  constructor(private hostActionSerivce: HostActionsService,
+              private location: Location) {
   }
 
   ngOnInit() {
   }
 
   addHost() {
-    this.hostActionSerivce.newHost(this.dnsHostName, this.nickname);
+    if (this.checkValidation()) {
+      this.hostActionSerivce.newHost(this.dnsHostName, this.nickname);
+      this.location.back();
+    }
+  }
+
+  private checkValidation(): Boolean {
+    if(this.dnsHostName != '' && this.nickname != '') {
+      this.dnsInputError = false;
+      this.nickInputError = false;
+      return true;
+    } else {
+        if (this.dnsHostName == '') {
+          this.dnsInputError = true;
+        } else { this.dnsInputError = false; }
+        if(this.nickname == '') {
+          this.nickInputError = true;
+      } else { this.nickInputError = false}
+  }
   }
 }

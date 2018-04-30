@@ -1,0 +1,11 @@
+version: '3'
+services:
+  server:
+    image: "nicom93/dockmon-server"
+    environment:
+      port: 9090
+  client:
+    image: "nicom93/dockmon-client"
+    environment:
+      port: 80
+      serverPort: 9090

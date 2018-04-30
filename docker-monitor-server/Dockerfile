@@ -1,4 +1,6 @@
-FROM doc-int-reg-1:5000/amitshlo/alpine-node
-WORKDIR /src
-COPY . /src
-CMD node build/index
+FROM node:alpine
+WORKDIR /usr/src/app
+COPY . .
+RUN yarn && yarn build
+EXPOSE 8080
+CMD [ "yarn", "start" ]

@@ -8,6 +8,8 @@ services:
     image: "nicom93/dockmon-tester"
     environment:
       port: 8080
+    ports:
+      - "5001:8080"
     depends_on:
       - postgres
     links:
@@ -17,7 +19,6 @@ services:
     environment:
       interval: 500
       webServerPort: 8080
-    build: simulator
     depends_on:
       - web
     links:

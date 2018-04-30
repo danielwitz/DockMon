@@ -67,19 +67,21 @@ export class ContainerStatsBusinessLogic {
     }
 
     static async buildContainerData(container: any, host: string): Promise<ContainerData> {
-        let stats = await ContainerStatsBusinessLogic.getContainerStats(container.Id, host);
+        let stats = await ContainerStatsBusinessLogic.
+        getContainerStats(container.Id, host, container.state, container.status);
         return {
             id: container.Id,
             name: container.Names[0],
-            state: container.State,
-            status: container.Status,
             stats: stats
         };
     }
 
-    static async getContainerStats(id: string, host: string): Promise<ContainerUsageStats> {
+    static async getContainerStats(id: string, host: string, state: string, status: string): Promise<ContainerUsageStats> {
         let data = await fetch(`http://${host}/containers/${id}/stats?stream=false`).then(res => res.json());
         return {
+            status: status,
+            state: state,
+            updateTime: new Date(),
             memory: ContainerStatsBusinessLogic.calculateMemoryPercent(data.memory_stats),
             cpu: ContainerStatsBusinessLogic.calculateCpuPercent(data.precpu_stats, data.cpu_stats)
         }

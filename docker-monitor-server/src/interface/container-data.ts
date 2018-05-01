@@ -5,4 +5,5 @@ export interface ContainerData extends mongoose.document{
     id: string;
     name: string;
     stats: ContainerUsageStats;
+    tags?: string[];
 }

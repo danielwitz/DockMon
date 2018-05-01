@@ -1,5 +1,5 @@
 import * as express from 'express';
-import {ContainerStatsBusinessLogic} from '../business-logic/container-stats';
+import {HostActionsBusinessLogic} from "../business-logic/host-actions";
 
 export class ContainerStatsAPI {
     static init(app: express.Application) {
@@ -7,7 +7,7 @@ export class ContainerStatsAPI {
     }
 
     static async getDataFromAllHosts(req: express.Request, res: express.Response): Promise<any> {
-        let data = await ContainerStatsBusinessLogic.getDataFromAllHosts();
+        let data = await HostActionsBusinessLogic.getHosts();
         res.send(data);
     }
 }

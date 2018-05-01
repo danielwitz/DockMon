@@ -5,4 +5,5 @@ export interface HostData extends mongoose.document {
     name: string;
     containers: ContainerData[];
     nickname: string;
+    tags?: string[];
 }

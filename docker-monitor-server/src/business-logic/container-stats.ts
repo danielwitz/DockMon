@@ -13,11 +13,9 @@ const swarmServicesNames: string[] = [];
 
 export class ContainerStatsBusinessLogic {
     static async getDataFromAllHosts(): Promise<HostData[]> {
-        let hostsDataPromises: Promise<HostData[]> = Promise.all(
-            HostActionsBusinessLogic.getHosts().map(host => ContainerStatsBusinessLogic.getAllHostContainersData(host))
-        );
+        const hosts = await HostActionsBusinessLogic.getHosts();
+        return Promise.all(hosts.map(host => ContainerStatsBusinessLogic.getAllHostContainersData(host)));
         // let swarmContainersDataPromises: Promise<HostData[]> = this.getAllSwarmContainersData(swarmManagerHost);
-        return hostsDataPromises;
     }
 
     static async getAllHostContainersData(host: HostData): Promise<HostData> {
@@ -67,8 +65,7 @@ export class ContainerStatsBusinessLogic {
     }
 
     static async buildContainerData(container: any, host: string): Promise<ContainerData> {
-        let stats = await ContainerStatsBusinessLogic.
-        getContainerStats(container.Id, host, container.state, container.status);
+        let stats = await ContainerStatsBusinessLogic.getContainerStats(container.Id, host, container.state, container.status);
         return {
             id: container.Id,
             name: container.Names[0],

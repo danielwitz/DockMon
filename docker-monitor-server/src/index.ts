@@ -28,9 +28,15 @@ app.listen(APPLICATION_PORT, () => {
 
 const importHosts = () => {
     return new Promise((async (resolve, reject) => {
-        while(true){
-            const hosts = await ContainerStatsBusinessLogic.getDataFromAllHosts();
-            hosts.forEach(host => Orm.update(host.name, host))
+        while (true) {
+            try {
+                const hosts = await ContainerStatsBusinessLogic.getDataFromAllHosts();
+                hosts.forEach(host => Orm.update(host.name, host))
+            } catch (error) {
+                console.error(error)
+                reject(error)
+                break;
+            }
         }
     }));
 }

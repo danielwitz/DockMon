@@ -22,8 +22,8 @@ export class HostActionsBusinessLogic {
         });
     }
 
-    static addNewHost(dnsHostName: string, nickname: string): void {
-        Orm.create({
+    static async addNewHost(dnsHostName: string, nickname: string): Promise<HostData> {
+        return await Orm.create({
             name: `${dnsHostName}:2375`,
             nickname: nickname,
             containers: []
@@ -35,12 +35,15 @@ export class HostActionsBusinessLogic {
         // });
     }
 
-    static removeHost(dnsHostName: string): void {
-        Orm.delete(dnsHostName);
+    static async removeHost(dnsHostName: string): Promise<any> {
+       return await Orm.delete(dnsHostName);
         // hosts = hosts.filter(host => host.name !== dnsHostName);
     }
 
     static async getHosts(): Promise<HostData[]> {
-        return Orm.retrieve();
+        console.log('retrieving hosts')
+        const hosts = await Orm.retrieve();
+        console.log(`hosts fetched frm db: ${JSON.stringify(hosts)}`)
+        return hosts;
     }
 }

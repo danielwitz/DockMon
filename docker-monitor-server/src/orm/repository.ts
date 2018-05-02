@@ -35,8 +35,10 @@ export class Repository<T extends mongoose.Document> implements IRepository<T> {
 
     private doModelAction(action: (...args) => any, ...args): Promise<any> {
         return new Promise<any>(((resolve, reject) => {
+            console.log(`invoking function ${action.name} with args: ${JSON.stringify(new Array(...args))}`);
             action(...args, (error, result) => {
                 if (error) {
+                    console.error(`function ${action.name} failed: ${error.message}\n ${error}`);
                     reject(error);
                 }
                 else {

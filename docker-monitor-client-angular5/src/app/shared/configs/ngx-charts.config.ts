@@ -10,9 +10,8 @@ export var lineChartShowYAxis = true;
 export var lineChartGradient = false;
 export var lineChartShowLegend = false;
 export var lineChartShowXAxisLabel = true;
-export var lineChartXAxisLabel = 'Memory';
+export var lineChartXAxisLabel = 'Time';
 export var lineChartShowYAxisLabel = true;
-export var lineChartYAxisLabel = 'Time';
 
 export var lineChartColorScheme = {
   domain: ['#1CBCD8', '#FF8D60', '#FF586B', '#AAAAAA']

@@ -27,7 +27,6 @@ export class ContainerLogsComponent implements OnInit {
   lineChartShowXAxisLabel = chartsData.lineChartShowXAxisLabel;
   lineChartXAxisLabel = chartsData.lineChartXAxisLabel;
   lineChartShowYAxisLabel = chartsData.lineChartShowYAxisLabel;
-  lineChartYAxisLabel = chartsData.lineChartYAxisLabel;
   lineChartColorScheme = chartsData.lineChartColorScheme;
 
   // line, area

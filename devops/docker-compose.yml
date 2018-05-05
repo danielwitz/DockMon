@@ -6,6 +6,8 @@ services:
       DM_PORT: 9090
   client:
     image: "nicom93/dockmon-client"
+    ports:
+      - "80:80"
     environment:
-      port: 80
-      serverPort: 9090
+      PORT: 80
+      PROXY: http://server:9090

@@ -9,7 +9,7 @@
     <ngx-charts-line-chart [scheme]="lineChartColorScheme" [results]="lineChartMulti" [gradient]="lineChartGradient"
                            [xAxis]="lineChartShowXAxis" [yAxis]="lineChartShowYAxis" [legend]="lineChartShowLegend"
                            [showXAxisLabel]="lineChartShowXAxisLabel" [showYAxisLabel]="lineChartShowYAxisLabel"
-                           [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="lineChartYAxisLabel"
+                           [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="'memory'"
                            [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation"
                            (select)="onSelect($event)"></ngx-charts-line-chart>
   </div>
@@ -17,7 +17,7 @@
     <ngx-charts-line-chart [scheme]="lineChartColorScheme" [results]="lineChartMultiCpu" [gradient]="lineChartGradient"
                            [xAxis]="lineChartShowXAxis" [yAxis]="lineChartShowYAxis" [legend]="lineChartShowLegend"
                            [showXAxisLabel]="lineChartShowXAxisLabel" [showYAxisLabel]="lineChartShowYAxisLabel"
-                           [xAxisLabel]="'cpu'" [yAxisLabel]="lineChartYAxisLabel"
+                           [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="'cpu'"
                            [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation"
                            (select)="onSelect($event)"></ngx-charts-line-chart>
   </div>

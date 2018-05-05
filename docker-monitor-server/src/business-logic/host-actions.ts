@@ -5,21 +5,11 @@ let hosts: HostData[] = [];
 export class HostActionsBusinessLogic {
 
     static initConstHosts(): void {
-        hosts.push({
-            name: 'ec2-18-222-156-26.us-east-2.compute.amazonaws.com:2375',
+        hosts=[{
+            name: '18.222.104.33:2375',
             nickname: 'Server1',
             containers: []
-        });
-        hosts.push({
-            name: 'ec2-18-188-226-134.us-east-2.compute.amazonaws.com:2375',
-            nickname: 'Server2',
-            containers: []
-        });
-        hosts.push({
-            name: 'ec2-18-188-237-156.us-east-2.compute.amazonaws.com:2375',
-            nickname: 'Server3',
-            containers: []
-        });
+        }];
     }
 
     static addNewHost(dnsHostName: string, nickname: string): void {

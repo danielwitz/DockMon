@@ -1,13 +1,24 @@
-<div class="row flx1">
-  <dm-container class="container col strc p-s"
-                [container]="selectedContainer"
-                [host]="hostName"
-                [class.low-op]="selectedContainer.state|stateToStopped"
-                (containerAction)="onContainerAction($event)">
-  </dm-container>
-</div>
-<div class="col flx1">
-  <div class="container-logs" *ngFor="let log of (logs | async)">
-    <span [ngClass]="log.level | logLevelToColor">{{log.message}}</span>
+<dm-container *ngIf="selectedContainer" class="container col strc p-s"
+              [container]="selectedContainer"
+              [host]="hostName"
+              [class.low-op]="selectedContainer.state|stateToStopped"
+              (containerAction)="onContainerAction($event)">
+</dm-container>
+<div style="display: flex; flex-direction: row;">
+  <div style="flex: 1; height:500px;">
+    <ngx-charts-line-chart [scheme]="lineChartColorScheme" [results]="lineChartMulti" [gradient]="lineChartGradient"
+                           [xAxis]="lineChartShowXAxis" [yAxis]="lineChartShowYAxis" [legend]="lineChartShowLegend"
+                           [showXAxisLabel]="lineChartShowXAxisLabel" [showYAxisLabel]="lineChartShowYAxisLabel"
+                           [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="lineChartYAxisLabel"
+                           [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation"
+                           (select)="onSelect($event)"></ngx-charts-line-chart>
+  </div>
+  <div style="flex:1; height:500px;">
+    <ngx-charts-line-chart [scheme]="lineChartColorScheme" [results]="lineChartMultiCpu" [gradient]="lineChartGradient"
+                           [xAxis]="lineChartShowXAxis" [yAxis]="lineChartShowYAxis" [legend]="lineChartShowLegend"
+                           [showXAxisLabel]="lineChartShowXAxisLabel" [showYAxisLabel]="lineChartShowYAxisLabel"
+                           [xAxisLabel]="'cpu'" [yAxisLabel]="lineChartYAxisLabel"
+                           [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation"
+                           (select)="onSelect($event)"></ngx-charts-line-chart>
   </div>
 </div>

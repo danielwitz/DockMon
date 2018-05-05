@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {HostComponent} from './components/host/host.component';
 import {ContainerLogsComponent} from './components/container-logs/container-logs.component';
@@ -56,10 +57,12 @@ import { FilterPipe } from './pipes/search-host/search-host.pipe'
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
-    StoreModule.forRoot(buildReducers(), {initialState: buildState()})
+    StoreModule.forRoot(buildReducers(), {initialState: buildState()}),
+    NgxChartsModule
   ],
   providers: [
     ContainersStatsService,

@@ -5,10 +5,10 @@ import {ContainerStatsAPI} from './api/container-stats';
 import {ContainerActionsAPI} from './api/container-actions';
 import {ContainerLogsAPI} from './api/container-logs';
 import {ContainerExtraDetailsApi} from './api/container-extra-details';
-import {HostActionsAPI} from "./api/host-actions";
+import {HostActionsAPI} from './api/host-actions';
 import {Orm} from './orm';
 import {ContainerStatsBusinessLogic} from './business-logic/container-stats';
-import {Observable} from "rxjs/Rx";
+import {Observable} from 'rxjs/Rx';
 
 const APPLICATION_PORT = process.env.DM_PORT ? process.env.DM_PORT : 1111;
 
@@ -29,10 +29,8 @@ Orm.init().then(() => {
 }).catch((error) => console.error(`could not connect to db: ${error.message} \n ${error}`));
 
 const importHosts = () => {
-    Observable.interval(6000).switchMap(async () => {
+    setInterval(async () => {
         const hosts = await ContainerStatsBusinessLogic.getDataFromAllHosts();
-        hosts.forEach(host => {
-            Orm.update(host.name, host);
-        })
-    }).subscribe();
-}
+        return Promise.all(hosts.map(host => Orm.update(host.name, host)))
+    }, 6000);
+};

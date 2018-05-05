@@ -28,7 +28,7 @@ export const Host = mongoose.model<HostData>('host', host, 'hosts', true);
 
 export class Orm {
 
-    static async init() : Promise<boolean>{
+    static async init(): Promise<boolean> {
         return await Orm.connect();
     }
 
@@ -50,8 +50,8 @@ export class Orm {
 
     static async retrieve(): Promise<HostData[]> {
         return new Promise<HostData[]>(((resolve, reject) => {
-            Host.find({}, (error, result) =>{
-                if(error){
+            Host.find({}, (error, result) => {
+                if (error) {
                     console.error(`function retrieve failed: ${error.message}\n ${error}`);
                     reject(error);
                 }
@@ -64,8 +64,8 @@ export class Orm {
 
     static async create(item: HostData): Promise<HostData> {
         return new Promise<HostData>(((resolve, reject) => {
-            Host.create(item, (error, result) =>{
-                if(error){
+            Host.create(item, (error, result) => {
+                if (error) {
                     console.error(`function retrieve failed: ${error.message}\n ${error}`);
                     reject(error);
                 }
@@ -78,8 +78,8 @@ export class Orm {
 
     static async update(name: string, item: HostData): Promise<HostData> {
         return new Promise<HostData>(((resolve, reject) => {
-            Host.findOneAndUpdate({name: name}, item, (error, result) =>{
-                if(error){
+            Host.findOneAndUpdate({name: name}, item, (error, result) => {
+                if (error) {
                     console.error(`function retrieve failed: ${error.message}\n ${error}`);
                     reject(error);
                 }
@@ -92,8 +92,8 @@ export class Orm {
 
     static async delete(name: string): Promise<any> {
         return new Promise<any>(((resolve, reject) => {
-            Host.findOneAndRemove({name: name},(error, result) =>{
-                if(error){
+            Host.findOneAndRemove({name: name}, (error, result) => {
+                if (error) {
                     console.error(`function retrieve failed: ${error.message}\n ${error}`);
                     reject(error);
                 }

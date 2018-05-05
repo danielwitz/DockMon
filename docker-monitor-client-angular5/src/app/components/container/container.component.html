@@ -8,12 +8,12 @@
   </div>
   <div class="row spc down">
     <div *ngIf="container.state|stateToRunning" class="row ctr">
-      <div class="col ctr state-box state-{{container.stats.memory | percentToColor}} r-m">
-        <span class="fa-15x">{{container.stats.memory | fix}}<small>%</small></span>
+      <div class="col ctr state-box state-{{container.stats[0].memory | percentToColor}} r-m">
+        <span class="fa-15x">{{container.stats[0].memory | fix}}<small>%</small></span>
         <div class="fa-1x">RAM</div>
       </div>
-      <div class="col ctr state-box state-{{container.stats.cpu | percentToColor}}">
-        <span class="fa-15x">{{container.stats.cpu | fix}}<small>%</small></span>
+      <div class="col ctr state-box state-{{container.stats[0].cpu | percentToColor}}">
+        <span class="fa-15x">{{container.stats[0].cpu | fix}}<small>%</small></span>
         <div class="fa-1x">CPU</div>
       </div>
     </div>

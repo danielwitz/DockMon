@@ -5,9 +5,6 @@ import {HostActionsBusinessLogic} from "./host-actions";
 
 let fetch = require('node-fetch');
 
-// const swarmManagerHost: string = process.env.SWARM_MANAGER ? JSON.parse(process.env.SWARM_MANAGER) : 'Swarm manager from configuration';
-// const swarmServicesNames: string[] = process.env.SERVICES_NAMES ? JSON.parse(process.env.SERVICES_NAMES) : ['Swarm services from configuration'];
-
 const swarmManagerHost: string = '';
 const swarmServicesNames: string[] = [];
 
@@ -15,7 +12,6 @@ export class ContainerStatsBusinessLogic {
     static async getDataFromAllHosts(): Promise<HostData[]> {
         const hosts = await HostActionsBusinessLogic.getHosts();
         return Promise.all(hosts.map(host => ContainerStatsBusinessLogic.getAllHostContainersData(host)));
-        // let swarmContainersDataPromises: Promise<HostData[]> = this.getAllSwarmContainersData(swarmManagerHost);
     }
 
     static async getAllHostContainersData(host: HostData): Promise<HostData> {
@@ -59,29 +55,37 @@ export class ContainerStatsBusinessLogic {
     }
 
     private static async buildContainersData(containers, host: HostData): Promise<HostData> {
-        let containerDataPromises: Promise<ContainerData>[] = containers.map(container => ContainerStatsBusinessLogic.buildContainerData(container, host.name));
+        const containerDataPromises: Promise<ContainerData>[] = containers.map(container =>
+            ContainerStatsBusinessLogic.buildContainerData(container, host));
         host.containers = await Promise.all(containerDataPromises);
         return host
     }
 
-    static async buildContainerData(container: any, host: string): Promise<ContainerData> {
-        let stats = await ContainerStatsBusinessLogic.getContainerStats(container.Id, host, container.State, container.Status);
+    static async buildContainerData(container: any, host: HostData): Promise<ContainerData> {
+        let stats = await ContainerStatsBusinessLogic.getContainerStats(container.Id, host.name);
         return {
             id: container.Id,
             name: container.Names[0],
-            stats: stats
+            stats: this.getContainerStatsArray(container.Id, host.containers, stats),
+            status: container.Status,
+            state: container.State,
         };
     }
 
-    static async getContainerStats(id: string, host: string, state: string, status: string): Promise<ContainerUsageStats> {
-        let data = await fetch(`http://${host}/containers/${id}/stats?stream=false`).then(res => res.json());
+    static getContainerStatsArray(containerId: string, containers: ContainerData[], stats: ContainerUsageStats): ContainerUsageStats[]{
+        const container = containers.find(container => container.id === containerId);
+        return container ? container.stats.concat(stats): [stats]
+    }
+
+    static async getContainerStats(id: string, host: string): Promise<ContainerUsageStats> {
+        const data = await fetch(`http://${host}/containers/${id}/stats?stream=false`).then(res => res.json());
+        const memory = ContainerStatsBusinessLogic.calculateMemoryPercent(data.memory_stats);
+        const cpu = ContainerStatsBusinessLogic.calculateCpuPercent(data.precpu_stats, data.cpu_stats)
         return {
-            status: status,
-            state: state,
             updateTime: new Date(),
-            memory: ContainerStatsBusinessLogic.calculateMemoryPercent(data.memory_stats),
-            cpu: ContainerStatsBusinessLogic.calculateCpuPercent(data.precpu_stats, data.cpu_stats)
-        }
+            memory: memory,
+            cpu: cpu
+        };
     }
 
     private static calculateMemoryPercent(memory_stats: any): number {

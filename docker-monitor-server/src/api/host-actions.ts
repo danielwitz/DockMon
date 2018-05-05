@@ -4,7 +4,6 @@ import {HostData} from "../interface/host-data";
 
 export class HostActionsAPI {
     static init(app:express.Application) {
-        HostActionsBusinessLogic.initConstHosts();
         app.post('/addHost', HostActionsAPI.addNewHost);
         app.post('/removeHost', HostActionsAPI.removeHost);
         app.get('/hosts', HostActionsAPI.getHosts);
@@ -27,7 +26,7 @@ export class HostActionsAPI {
     }
 
     static async getHosts(req: express.Request, res: express.Response): Promise<any>{
-        const hosts =  await HostActionsBusinessLogic.getHosts();
+        const hosts =  await HostActionsBusinessLogic.getHostsWithCurrentContainerStats();
         res.send(hosts);
     }
 }

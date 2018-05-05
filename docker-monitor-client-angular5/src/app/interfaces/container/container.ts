@@ -5,5 +5,6 @@ export interface Container {
   name: string;
   state: string;
   status: string;
-  stats: ContainerUsageStats;
+  stats: ContainerUsageStats[];
+  tags?: string[];
 }

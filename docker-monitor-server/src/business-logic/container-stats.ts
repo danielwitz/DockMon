@@ -65,7 +65,7 @@ export class ContainerStatsBusinessLogic {
     }
 
     static async buildContainerData(container: any, host: string): Promise<ContainerData> {
-        let stats = await ContainerStatsBusinessLogic.getContainerStats(container.Id, host, container.state, container.status);
+        let stats = await ContainerStatsBusinessLogic.getContainerStats(container.Id, host, container.State, container.Status);
         return {
             id: container.Id,
             name: container.Names[0],

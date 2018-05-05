@@ -43,7 +43,7 @@ export class HostActionsBusinessLogic {
     static async getHosts(): Promise<HostData[]> {
         console.log('retrieving hosts')
         const hosts = await Orm.retrieve();
-        console.log(`hosts fetched frm db: ${JSON.stringify(hosts)}`)
+        console.log(`hosts fetched from db: ${JSON.stringify(hosts)}`)
         return hosts;
     }
 }

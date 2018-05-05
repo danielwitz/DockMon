@@ -1,13 +1,35 @@
-import {HostRepository} from './host-repository';
 import * as mongoose from 'mongoose';
-import {HostData} from "../interface/host-data";
+import {HostData} from '../interface/host-data';
 
-const hostRepository: HostRepository = new HostRepository();
+export const Schema = mongoose.Schema;
+
+const containerStats = new Schema({
+    status: {type: String, required: true},
+    state: {type: String, required: true},
+    cpu: {type: Number, required: true},
+    ram: {type: Number, required: true},
+    updateTime: {type: Date, required: true},
+});
+const container = new Schema({
+    name: {type: String, required: true},
+    id: {type: String, required: true},
+    stats: {type: containerStats, required: false},
+    tags: {type: [String], required: false},
+});
+
+const host = new Schema({
+    name: {type: String, required: true},
+    nickname: {type: String, required: false},
+    tags: {type: [String], required: false},
+    containers: {type: [container], required: false},
+});
+
+export const Host = mongoose.model<HostData>('host', host, 'hosts', true);
 
 export class Orm {
 
-    static async init() {
-       await Orm.connect();
+    static async init() : Promise<boolean>{
+        return await Orm.connect();
     }
 
     static async connect(): Promise<boolean> {
@@ -27,26 +49,58 @@ export class Orm {
     }
 
     static async retrieve(): Promise<HostData[]> {
-        return await hostRepository.retrieve();
+        return new Promise<HostData[]>(((resolve, reject) => {
+            Host.find({}, (error, result) =>{
+                if(error){
+                    console.error(`function retrieve failed: ${error.message}\n ${error}`);
+                    reject(error);
+                }
+                else {
+                    resolve(result);
+                }
+            });
+        }));
     }
 
     static async create(item: HostData): Promise<HostData> {
-        return await hostRepository.create(item);
+        return new Promise<HostData>(((resolve, reject) => {
+            Host.create(item, (error, result) =>{
+                if(error){
+                    console.error(`function retrieve failed: ${error.message}\n ${error}`);
+                    reject(error);
+                }
+                else {
+                    resolve(result);
+                }
+            });
+        }));
     }
 
     static async update(name: string, item: HostData): Promise<HostData> {
-        return await hostRepository.update(name, item);
+        return new Promise<HostData>(((resolve, reject) => {
+            Host.findOneAndUpdate({name: name}, item, (error, result) =>{
+                if(error){
+                    console.error(`function retrieve failed: ${error.message}\n ${error}`);
+                    reject(error);
+                }
+                else {
+                    resolve(result);
+                }
+            });
+        }));
     }
 
     static async delete(name: string): Promise<any> {
-        return await hostRepository.delete(name);
-    }
-
-    static async findOne(condition?: Object): Promise<mongoose.Query<HostData>> {
-        return await hostRepository.findOne(condition);
-    }
-
-    static async find(condition?: Object, fields?: Object, options?: Object): Promise<mongoose.Query<HostData[]>> {
-        return await hostRepository.find(condition, fields, options);
+        return new Promise<any>(((resolve, reject) => {
+            Host.findOneAndRemove({name: name},(error, result) =>{
+                if(error){
+                    console.error(`function retrieve failed: ${error.message}\n ${error}`);
+                    reject(error);
+                }
+                else {
+                    resolve(result);
+                }
+            });
+        }));
     }
 }

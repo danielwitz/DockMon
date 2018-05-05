@@ -31,6 +31,8 @@ Orm.init().then(() => {
 const importHosts = () => {
     Observable.interval(3000).switchMap(async () => {
         const hosts = await ContainerStatsBusinessLogic.getDataFromAllHosts();
-        hosts.forEach(host => Orm.update(host.name, host))
+        hosts.forEach(host => {
+            Orm.update(host.name, host);
+        })
     }).subscribe((value) => console.log(JSON.stringify(value)));
 }

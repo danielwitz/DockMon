@@ -16,7 +16,7 @@ export class ContainersStatsService {
   constructor(private configService: ConfigService,
               private http: HttpClient,
               private store: Store<AppState>) {
-    this.serverUrl = `${configService.getConfig().host}/stats/getDataFromAllHosts`;
+    this.serverUrl = `${configService.getConfig().host}/hosts`;
     this.fetchData().subscribe((hostsData) => {
       this.updateHosts(hostsData);
       Observable.interval(6000).switchMap(() => {

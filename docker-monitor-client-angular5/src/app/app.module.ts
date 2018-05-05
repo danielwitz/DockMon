@@ -32,6 +32,7 @@ import {
 import { NavComponent } from './components/nav/nav.component';
 import { NewHostComponent } from './components/new-host/new-host.component';
 import { HostActionsService } from './services/host/host-actions.service';
+import { FilterPipe } from './pipes/search-host/search-host.pipe'
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { HostActionsService } from './services/host/host-actions.service';
     StateToRunning,
     StateToStopped,
     NavComponent,
-    NewHostComponent
+    NewHostComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

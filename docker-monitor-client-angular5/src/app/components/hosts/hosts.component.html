@@ -1,7 +1,7 @@
-<div class="fcol wrp right up app">
-  <app-nav></app-nav>
+<div class="fcol wrp">
+  <app-nav (searchTextChanged)="onFilterTextChanged($event)"></app-nav>
     <dm-host class="server t-m l-m col strc grow"
-             *ngFor="let host of hosts | async; trackBy:trackByHostName"
+             *ngFor="let host of hosts | async | filter:filterText"
              [host]="host"
              [style.order]="host.containers?.length"
              (containerAction)="onContainerAction($event)"

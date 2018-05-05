@@ -1,5 +1,6 @@
 <div class="fcol wrp">
   <app-nav (searchTextChanged)="onFilterTextChanged($event)"></app-nav>
+  <div style="display: flex; align-items:start;">
     <dm-host class="server t-m l-m col strc grow"
              *ngFor="let host of hosts | async | filter:filterText"
              [host]="host"
@@ -8,5 +9,6 @@
              (selectContainer)="selectContainer($event)"
              (removeHostAction)="removeHostByName($event)">
     </dm-host>
+  </div>
 </div>
 

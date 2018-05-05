@@ -21,8 +21,9 @@ export class ContainersStatsService {
       this.updateHosts(hostsData);
       Observable.interval(6000).switchMap(() => {
         return this.fetchData();
-      }).subscribe(this.updateHosts.bind(this));
-    })
+      });
+      //.subscribe(this.updateHosts.bind(this));
+    });
   }
 
   updateHosts(hostsData: HostData[]): void {

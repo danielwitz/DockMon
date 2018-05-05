@@ -16,6 +16,7 @@ export class ContainerComponent implements OnChanges {
   @Output() selectContainer: EventEmitter<SelectedContainer>;
   waitingForAction: boolean;
   running: boolean;
+  warning: any;
 
   constructor() {
     this.containerAction = new EventEmitter<ContainerActionData>();

@@ -1,4 +1,4 @@
-import swal from 'sweetalert2'
+import swal from 'sweetalert2';
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {HostData} from '../../interfaces/host/host-data';
 import {ContainerActionData} from '../../interfaces/container/container-action-data';

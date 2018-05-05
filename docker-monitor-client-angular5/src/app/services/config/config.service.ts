@@ -6,21 +6,11 @@
  *
  */
 import {Injectable} from '@angular/core';
-import {config} from '../../../fetch-config';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class ConfigService {
-  config: any;
-
-  constructor() {
-    this.config = config;
-  }
-
   getConfig(): any {
-    return this.config;
-  }
-
-  getMapConfig() {
-    return this.config.mapConfig;
+    return environment;
   }
 }

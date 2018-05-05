@@ -5468,8 +5468,8 @@ svgo@^0.7.0:
     whet.extend "~0.9.9"
 
 sweetalert2@^7.19.2:
-  version "7.19.2"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.19.2.tgz#46fa92be1c33c058c76ddfe6bc08327c4ee05fcb"
+  version "7.19.3"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.19.3.tgz#c94ff773019813b03e880a7fa642f826b051e0d0"
 
 symbol-observable@1.0.1:
   version "1.0.1"

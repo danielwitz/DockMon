@@ -1,7 +1,9 @@
 import pandas as pd
 import pymongo
+import time
 from sklearn.ensemble import IsolationForest
 from pymongo import MongoClient
+from tabulate import tabulate
 import pprint
 import threading
 
@@ -14,6 +16,7 @@ MISSING_VALUES_REPRESENTATION = 'NaN'  # indicates which types are considered as
 DROP_ABOVE_NULL_THRESHOLD = 0.6  # percents [0.0 - 1.0]
 ISOLATION_FOREST_N_ESTIMATORS = 100  # [int > 0] isolation forest is used for removing outliers in data
 KNN_N_NEIGHBORS = 4  # [int > 0] knn is used to impute missing data
+
 
 def detect_anomalies_with_isolation_forest(X, contamination=0.1):
     """
@@ -33,7 +36,7 @@ def detect_anomalies_with_isolation_forest(X, contamination=0.1):
                           contamination=contamination)
 
     columns = df.columns.tolist()
-    columns = [c for c in columns if c not in ["_id"]]
+    columns = [c for c in columns if c not in ["_id","updateTime"]]
 
     sanitizedColums = df[columns]
     clf.fit(sanitizedColums)
@@ -44,19 +47,41 @@ def detect_anomalies_with_isolation_forest(X, contamination=0.1):
             outliers.append(i)
     return df.index[outliers]
 
-def checkForUpdates(stats) :
-    cursor = stats.find({"id":{'$gte':0,'$lt': 3}})
-    df = pd.DataFrame(list(cursor))
+def checkForUpdates(hosts) :
+    containers = []
 
-    detect_anomalies_with_isolation_forest(df)
+    for host in hosts.find():
+        for container in host["containers"]:
+            containers.append(container)
+
+    for container in containers :
+        relevantOutliers = []
+        df = pd.DataFrame(container["stats"])
+        x =tabulate(df, headers='keys', tablefmt='psql')
+        print(x)
+        outliers = detect_anomalies_with_isolation_forest(df)
+        relevantOutliers.append(getRelevantOutliers(outliers,df))
+        updateAnamolisInDb(relevantOutliers,hosts)
+
 
 def updateAnamolisInDb(anamolys,collection) :
     collection.find({})
 
+def getRelevantOutliers(outliers, dataFrame) :
+    relevant= []
+    for row in outliers :
+        dfSize = len(dataFrame.index) - 1
+        if(row == dfSize) :
+            relevant.append(row)
+        # updatetime = dataFrame.loc[row,"updateTime"]
+        # if (updatetime >= time.time() - 3):
+        # relevant.append(row)
 
+    return relevant
 
 client = MongoClient('mongodb://dockmon:bRX-SGD-DZQ-26o@ds111078.mlab.com:11078/dockmon')
 db = client['dockmon']
-collection = db.stats
+collection = db.hosts
 
-threading.Timer(3.0,checkForUpdates(collection)).start()
+checkForUpdates(collection)
+# threading.Timer(3.0, checkForUpdates,args=collection).start()

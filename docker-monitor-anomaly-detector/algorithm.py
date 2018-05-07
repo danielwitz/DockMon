@@ -36,7 +36,7 @@ def detect_anomalies_with_isolation_forest(X, contamination=0.1):
                           contamination=contamination)
 
     columns = df.columns.tolist()
-    columns = [c for c in columns if c not in ["_id","updateTime"]]
+    columns = [c for c in columns if c not in ["_id", "updateTime"]]
 
     sanitizedColums = df[columns]
     clf.fit(sanitizedColums)
@@ -47,41 +47,76 @@ def detect_anomalies_with_isolation_forest(X, contamination=0.1):
             outliers.append(i)
     return df.index[outliers]
 
-def checkForUpdates(hosts) :
+
+def checkForUpdates(hosts):
     containers = []
 
     for host in hosts.find():
         for container in host["containers"]:
             containers.append(container)
 
-    for container in containers :
+    for container in containers:
         relevantOutliers = []
+        containerId = container["id"]
         df = pd.DataFrame(container["stats"])
-        x =tabulate(df, headers='keys', tablefmt='psql')
+        x = tabulate(df, headers='keys', tablefmt='psql')
         print(x)
         outliers = detect_anomalies_with_isolation_forest(df)
-        relevantOutliers.append(getRelevantOutliers(outliers,df))
-        updateAnamolisInDb(relevantOutliers,hosts)
+        relevantOutliers = getRelevantOutliers(outliers, df)
+        updateAnamolisInDb(relevantOutliers, hosts, containerId)
 
 
-def updateAnamolisInDb(anamolys,collection) :
-    collection.find({})
+def updateAnamolisInDb(anamolys, collection, containerId):
+    maxMemory = 557686786787578578;
+    minCpu = 0.0;
+    maxCpu = 234523542345235;
+    avgCpu = 0;
+    avgMemory = 0;
+    #x = tabulate(anamolys, headers='keys', tablefmt='psql')
+    #print(x)
 
-def getRelevantOutliers(outliers, dataFrame) :
-    relevant= []
-    for row in outliers :
+    # calculate average
+    for anomalie in anamolys:
+        avgCpu += anomalie["cpu"]
+        avgMemory += anomalie["memory"]
+
+    rowsAmount = len(anamolys)
+    avgMemory = avgMemory / rowsAmount
+    avgCpu = avgCpu / rowsAmount
+
+    for anomalie in anamolys:
+        memory = anomalie["memory"]
+        cpu = anomalie["cpu"]
+
+        if (memory < maxMemory and memory > avgMemory):
+            maxMemory = memory
+        if (cpu < maxCpu and cpu > avgCpu):
+            maxCpu = cpu
+        if (cpu > minCpu and cpu < avgCpu):
+            minCpu = cpu
+
+    # updating the db
+    collection.update_one({"containers.id": containerId},
+                          {"$set": {"containers.$.maxNormalCpu": float(maxCpu),
+                                    "container.$.minNormalCpu" : float(minCpu),
+                                    "container.$.maxNormalMemory" : float(maxMemory)}})
+    #print(collection.find_one({"containers.id" : containerId}))
+
+
+def getRelevantOutliers(outliers, dataFrame):
+    relevant = []
+    for row in outliers:
         dfSize = len(dataFrame.index) - 1
-        if(row == dfSize) :
-            relevant.append(row)
+        # if (row == dfSize):
+        relevant.append(dataFrame.loc[row, :])
         # updatetime = dataFrame.loc[row,"updateTime"]
         # if (updatetime >= time.time() - 3):
         # relevant.append(row)
 
     return relevant
 
+
 client = MongoClient('mongodb://dockmon:bRX-SGD-DZQ-26o@ds111078.mlab.com:11078/dockmon')
 db = client['dockmon']
 collection = db.hosts
-
-checkForUpdates(collection)
-# threading.Timer(3.0, checkForUpdates,args=collection).start()
+threading.Timer(3.0, checkForUpdates(collection)).start()

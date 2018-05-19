@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {HostComponent} from './components/host/host.component';
 import {ContainerLogsComponent} from './components/container-logs/container-logs.component';
@@ -32,6 +33,7 @@ import {
 import { NavComponent } from './components/nav/nav.component';
 import { NewHostComponent } from './components/new-host/new-host.component';
 import { HostActionsService } from './services/host/host-actions.service';
+import { FilterPipe } from './pipes/search-host/search-host.pipe'
 
 @NgModule({
   declarations: [
@@ -50,14 +52,17 @@ import { HostActionsService } from './services/host/host-actions.service';
     StateToRunning,
     StateToStopped,
     NavComponent,
-    NewHostComponent
+    NewHostComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
-    StoreModule.forRoot(buildReducers(), {initialState: buildState()})
+    StoreModule.forRoot(buildReducers(), {initialState: buildState()}),
+    NgxChartsModule
   ],
   providers: [
     ContainersStatsService,

@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {ContainersStatsService} from '../../services/container/container-stats.service';
 import {HostData} from '../../interfaces/host/host-data';
 import {AppState} from '../../interfaces/state/app-state';
 import {Store} from '@ngrx/store';
@@ -17,6 +16,7 @@ import {HostActionsService} from "../../services/host/host-actions.service";
 })
 export class HostsComponent {
   hosts: Observable<HostData[]>;
+  filterText: string;
 
   constructor(private containersActionService: ContainersActionsService,
               private selectContainerService: SelectContainerService,
@@ -42,5 +42,9 @@ export class HostsComponent {
 
   removeHostByName(hostName: string): void {
     this.hostActionsService.removeHost(hostName);
+  }
+
+  onFilterTextChanged(text:string){
+    this.filterText = text;
   }
 }

@@ -22,18 +22,9 @@ export class SelectContainerService {
 
   selectContainer(selectedContainer: SelectedContainer) {
     this.updateSelectedContainer(selectedContainer);
-    this.getLogs(selectedContainer.hostName, selectedContainer.id).subscribe(this.updateLogs.bind(this));
-  }
-
-  private updateLogs(logs: Log[]) {
-    this.store.dispatch(new ViewContainerLogsAction(logs));
   }
 
   private updateSelectedContainer(selectedContainer: SelectedContainer) {
     this.store.dispatch(new SelectContainerAction(selectedContainer));
-  }
-
-  private getLogs(host: string, containerId: string): Observable<Log[]> {
-    return this.http.get<Log[]>(`${this.serverUrl}/${host}/${containerId}`);
   }
 }

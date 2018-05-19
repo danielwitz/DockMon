@@ -1,6 +1,13 @@
-<div class="server right ph-l b-m no-shrink nav">
-  <span>DockMon</span>
-  <a routerLink="/newHost"> <i class="fas fa-plus"></i> </a>
+<div class="nav server ph-l b-m no-shrink">
+  <div>
+    <span style="order: 0;">DockMon</span>
+    <a style="order: 1" routerLink="/newHost"> <i class="fas fa-plus"></i> </a>
+  </div>
+  <div>
+    <form class="searchBox" style="order: 2; margin-top: 6px; flex-grow: 8">
+      <input type="text" [(ngModel)]="text" (change)="onTextChanged()" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
 </div>
-
 

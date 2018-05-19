@@ -114,22 +114,18 @@ dm-hosts, dm-container-logs {
 .server {
   color: #f1f1f9;
   background-color: #7781c8;
-  border: 0.1em solid #bdbdbd;
-  border-radius: 0.3em;
 }
 
-.host-wrapper{
-  display: grid;
-  grid-template-columns: 3500px 50px;
-}
 
 .server > .scroll {
-  max-height: 300px;
+  /*max-height: 300px;*/
 }
 
 .container {
   background-color: white;
   color: black;
+  display: flex;
+  flex-direction: column;
   /*box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.5);*/
   /*min-width: 10em;*/
   border-bottom: 1px solid lightgray;
@@ -274,14 +270,14 @@ dm-hosts, dm-container-logs {
   position: absolute;
 }
 
-.flx,
+.flx, .newHost,
 .col, .fcol, .row, .frow,
 .ctr, .spc, .strc, .arnd, .spr, .apr,
 .right, .left, .up, .down {
   display: flex;
 }
 
-.col, .fcol {
+.col {
   flex-direction: column;
 }
 
@@ -289,7 +285,7 @@ dm-hosts, dm-container-logs {
   flex-direction: row;
 }
 
-.flx1, .frow, .fcol {
+.flx1, .frow {
   flex: 1;
 }
 
@@ -350,7 +346,7 @@ dm-hosts, dm-container-logs {
 .up, .right.up, .left.up,
 .col.right, .col.right.up, .col.right.down,
 .col.spc.right, .col.arnd.right {
-  align-items: flex-start;
+  /* align-items: flex-start; */
 }
 
 .down, .right.down, .left.down,
@@ -709,6 +705,10 @@ app-nav {
 }
 
 .nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   background-color: #393f62;
 }
 
@@ -727,13 +727,60 @@ body > app-root > dm-hosts > div > app-nav > div > a {
   /* margin: 20px; */
 }
 
-.serverTitle {
-  height: 40px;
-  padding: 10px 20px;
+#serverTitle {
+  display: flex;
+  height: 50px;
 }
 
+#serverDetails{
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+
 #removeImage{
-  padding-left: 15px;
-  float: right;
   cursor:pointer;
+  margin: 15px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+from.searchBox {
+  justify-content: flex-end;
+}
+
+form.searchBox input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: white;
+}
+
+form.searchBox button {
+  float: left;
+  width: 20%;
+  padding: 5px;
+  background: transparent;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.searchBox::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.fcol{
+  justify-content: space-around;
+  align-content: flex-start;
 }

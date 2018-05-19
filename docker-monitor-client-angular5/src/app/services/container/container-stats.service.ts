@@ -22,11 +22,15 @@ export class ContainersStatsService {
       Observable.interval(6000).switchMap(() => {
         return this.fetchData();
       }).subscribe(this.updateHosts.bind(this));
-    })
+    });
   }
 
   updateHosts(hostsData: HostData[]): void {
     this.store.dispatch(new UpdateHostsAction(hostsData));
+  }
+
+  getContainerHistory(hostName:string, containerId:string) {
+    return this.http.get<any>(`${this.configService.getConfig().host}/stats/container/${hostName}/${containerId}`)
   }
 
   fetchData(): Observable<HostData[]> {

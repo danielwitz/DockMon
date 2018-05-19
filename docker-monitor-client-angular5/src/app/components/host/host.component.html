@@ -1,25 +1,30 @@
 <div>
-  <div class="host-wrapper" id="serverTitle">
-    <span class="serverTitle" id="serverNickname">
+<div id="serverTitle" >
+  <div id="serverDetails">
+    <span>
       <b class="fa-18x">Server Nickname: </b>
       <span class="fa-15x"> {{host.nickname}}</span>
     </span>
-    <span id="removeImage">
-    <i class="far fa-trash-alt fa-2x" (click)="removeHost(host.name)"></i>
-    </span>
-    <span class="serverTitle" id="dnsName">
+    <div>
+  <span>
     <b class="fa-18x">DNS Host Name:</b>
     <span class="fa-15x">{{host.name}}</span>
   </span>
+    </div>
   </div>
-  <div class="scroll">
-    <dm-container class="container col strc p-s"
-                  *ngFor="let container of host.containers | sortByField:'nickname'; trackBy:trackByContainerId"
-                  [container]="container"
-                  [host]="host.name"
-                  [class.low-op]="container.state|stateToStopped"
-                  (containerAction)="dispatchContainerAction($event)"
-                  (selectContainer)="dispatchSelectContainer($event)">
-    </dm-container>
+  <div id="removeImage">
+  <span>
+    <i class="far fa-trash-alt fa-2x" (click)="removeHost(host.name)"></i>
+  </span>
   </div>
 </div>
+  <dm-container #cnt class="container col strc p-s"
+                *ngFor="let container of host.containers | sortByField:'nickname'; trackBy:trackByContainerId"
+                [container]="container"
+                [host]="host.name"
+                [class.low-op]="container.state|stateToStopped"
+                (containerAction)="dispatchContainerAction($event)"
+                (selectContainer)="dispatchSelectContainer($event)">
+  </dm-container>
+</div>
+

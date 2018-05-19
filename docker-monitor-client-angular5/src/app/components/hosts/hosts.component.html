@@ -1,12 +1,14 @@
-<div class="fcol wrp right up app">
-  <app-nav></app-nav>
-  <dm-host class="server t-m l-m strc grow"
-           *ngFor="let host of hosts | async; trackBy:trackByHostName"
-           [host]="host"
-           [style.order]="host.containers?.length"
-           (containerAction)="onContainerAction($event)"
-           (selectContainer)="selectContainer($event)"
-           (removeHostAction)="removeHostByName($event)">
-  </dm-host>
+<div class="fcol wrp">
+  <app-nav (searchTextChanged)="onFilterTextChanged($event)"></app-nav>
+  <div style="display: flex; align-items:start;">
+    <dm-host class="server t-m l-m col strc grow"
+             *ngFor="let host of hosts | async | filter:filterText"
+             [host]="host"
+             [style.order]="host.containers?.length"
+             (containerAction)="onContainerAction($event)"
+             (selectContainer)="selectContainer($event)"
+             (removeHostAction)="removeHostByName($event)">
+    </dm-host>
+  </div>
 </div>
 

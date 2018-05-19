@@ -16,6 +16,7 @@ export class ContainerComponent implements OnChanges {
   @Output() selectContainer: EventEmitter<SelectedContainer>;
   waitingForAction: boolean;
   running: boolean;
+  warning: any;
 
   constructor() {
     this.containerAction = new EventEmitter<ContainerActionData>();
@@ -23,9 +24,18 @@ export class ContainerComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    let currentValue = changes['container'].currentValue;
     if (this.isStatusChanged(changes['container'].previousValue,
-        changes['container'].currentValue)) {
+        currentValue)) {
       this.waitingForAction = false;
+    }
+
+    if((currentValue.maxNormalCpu <= currentValue.stats.cpu)||
+      (currentValue.minNormalCpu >= currentValue.stats.cpu) ||
+      (currentValue.maxNormalMemory <= currentValue.stats.memory)) {
+      this.warning = true;
+    } else {
+      this.warning = false;
     }
   }
 

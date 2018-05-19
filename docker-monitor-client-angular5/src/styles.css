@@ -114,11 +114,17 @@ dm-hosts, dm-container-logs {
 .server {
   color: #f1f1f9;
   background-color: #7781c8;
-  width: 80%;
+  border: 0.1em solid #bdbdbd;
+  border-radius: 0.3em;
+}
+
+.host-wrapper{
+  display: grid;
+  grid-template-columns: 3500px 50px;
 }
 
 .server > .scroll {
-  /*max-height: 300px;*/
+  max-height: 300px;
 }
 
 .container {
@@ -344,7 +350,7 @@ dm-hosts, dm-container-logs {
 .up, .right.up, .left.up,
 .col.right, .col.right.up, .col.right.down,
 .col.spc.right, .col.arnd.right {
-  /* align-items: flex-start; */
+  align-items: flex-start;
 }
 
 .down, .right.down, .left.down,
@@ -721,7 +727,7 @@ body > app-root > dm-hosts > div > app-nav > div > a {
   /* margin: 20px; */
 }
 
-div#serverTitle {
+.serverTitle {
   height: 40px;
   padding: 10px 20px;
 }
@@ -731,8 +737,3 @@ div#serverTitle {
   float: right;
   cursor:pointer;
 }
-
-#dnsName{
-  float: right;
-}
-

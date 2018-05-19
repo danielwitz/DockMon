@@ -7,4 +7,7 @@ export interface Container {
   status: string;
   stats: ContainerUsageStats[];
   tags?: string[];
+  maxNormalCpu? : number;
+  minNormalCpu? : number;
+  maxNormalMemory? : number;
 }

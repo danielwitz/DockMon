@@ -8,4 +8,7 @@ export interface ContainerData extends mongoose.document{
     status: string;
     stats: ContainerUsageStats[];
     tags?: string[];
+    maxNormalCpu? : number;
+    minNormalCpu? : number;
+    maxNormalMemory? : number;
 }

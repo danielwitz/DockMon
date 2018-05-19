@@ -15,6 +15,9 @@ const container = new Schema({
     state: {type: String, required: true},
     stats: {type: [containerStats], required: false},
     tags: {type: [String], required: false},
+    maxNormalCpu: {type: Number, required: false},
+    minNormalCpu: {type: Number, required: false},
+    maxNormalMemory: {type: Number, required: false},
 });
 
 const host = new Schema({

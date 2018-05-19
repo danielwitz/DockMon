@@ -62,13 +62,18 @@ export class ContainerStatsBusinessLogic {
     }
 
     static async buildContainerData(container: any, host: HostData): Promise<ContainerData> {
-        let stats = await ContainerStatsBusinessLogic.getContainerStats(container.Id, host.name);
+        const stats = await ContainerStatsBusinessLogic.getContainerStats(container.Id, host.name);
+        const dbContainer = host.containers.find(x => x.id === container.Id);
+        dbContainer.maxNormalMemory && console.log(`maxCpu: ${dbContainer.maxNormalCpu}, minCpu: ${dbContainer.minNormalCpu}, maxMem: ${dbContainer.maxNormalMemory}`)
         return {
             id: container.Id,
             name: container.Names[0],
             stats: this.getContainerStatsArray(container.Id, host.containers, stats),
             status: container.Status,
             state: container.State,
+            maxNormalCpu: dbContainer ? dbContainer.maxNormalCpu : 100,
+            minNormalCpu: dbContainer ? dbContainer.minNormalCpu : 0,
+            maxNormalMemory: dbContainer ? dbContainer.maxNormalMemory : 100,
         };
     }
 

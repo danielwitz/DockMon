@@ -19,7 +19,7 @@ export class HostActionsBusinessLogic {
     }
 
     static async getHostsWithCurrentContainerStats(): Promise<HostData[]> {
-        let hosts = await Orm.retrieveHosts();
+        const hosts = await Orm.retrieveHosts();
         const hostsPromises = hosts.map(async host => {
             const containers = await Orm.retrieveContainers({hostId: host._id});
             const containerPromises = containers.map(async container => {
@@ -30,6 +30,7 @@ export class HostActionsBusinessLogic {
             return host;
         });
 
-        return await Promise.all(hostsPromises);
+        const result =  await Promise.all(hostsPromises);
+        return result;
     }
 }

@@ -30,6 +30,5 @@ Orm.init().then(() => {
 const importHosts = () => {
     setInterval(async () => {
         const hosts = await ContainerStatsBusinessLogic.getDataFromAllHosts();
-        console.log(`imported hosts = ${JSON.stringify(hosts)}`)
     }, 6000);
 };

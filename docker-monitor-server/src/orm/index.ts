@@ -28,7 +28,6 @@ const host = new Schema({
     name: {type: String, required: true},
     nickname: {type: String, required: false},
     tags: {type: [String], required: false},
-    containers: {type: [container], required: false},
 });
 
 export const Host = mongoose.model<HostData>('host', host, 'hosts', true);
@@ -130,20 +129,6 @@ export class Orm {
         }));
     }
 
-    static async createContainer(containerToCreate: ContainerData): Promise<ContainerData> {
-        return new Promise<ContainerData>(((resolve, reject) => {
-            Container.create(containerToCreate, (error, result) => {
-                if (error) {
-                    console.error(`create container failed: ${error.message}\n ${error}`);
-                    reject(error);
-                }
-                else {
-                    resolve(result);
-                }
-            });
-        }));
-    }
-
     static async createContainerStats(statsToCreate: ContainerUsageStats): Promise<ContainerUsageStats> {
         return new Promise<ContainerUsageStats>(((resolve, reject) => {
             ContainerStats.create(statsToCreate, (error, result) => {
@@ -158,39 +143,11 @@ export class Orm {
         }));
     }
 
-    static async updateHost(name: string, item: HostData): Promise<HostData> {
-        return new Promise<HostData>(((resolve, reject) => {
-            Host.findOneAndUpdate({name: name}, item, (error, result) => {
-                if (error) {
-                    console.error(`update host failed: ${error.message}\n ${error}`);
-                    reject(error);
-                }
-                else {
-                    resolve(result);
-                }
-            });
-        }));
-    }
-
     static async updateContainer(id: string, hostId: string, item: ContainerData): Promise<ContainerData> {
         return new Promise<ContainerData>(((resolve, reject) => {
             Container.findOneAndUpdate({id: id, hostId: hostId}, item, {upsert: true}, (error, result) => {
                 if (error) {
                     console.error(`update container failed: ${error.message}\n ${error}`);
-                    reject(error);
-                }
-                else {
-                    resolve(result);
-                }
-            });
-        }));
-    }
-
-    static async updateContainerStats(updateTime: Date, containerId: string, item: ContainerUsageStats): Promise<ContainerUsageStats> {
-        return new Promise<ContainerUsageStats>(((resolve, reject) => {
-            ContainerStats.findOneAndUpdate({updateTime: updateTime, containerId: containerId}, item, {upsert: true}, (error, result) => {
-                if (error) {
-                    console.error(`update stats failed: ${error.message}\n ${error}`);
                     reject(error);
                 }
                 else {

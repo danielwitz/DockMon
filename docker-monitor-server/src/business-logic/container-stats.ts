@@ -63,6 +63,7 @@ export class ContainerStatsBusinessLogic {
     }
 
     static async buildContainerData(container: any, host: HostData): Promise<ContainerData> {
+        const [dbContainer] = await Orm.retrieveContainers({id: container.Id, hostId: host._id});
         let savedContainer = await Orm.updateContainer(container.Id, host._id, {
             hostId: host._id,
             id: container.Id,
@@ -72,12 +73,6 @@ export class ContainerStatsBusinessLogic {
             maxNormalCpu: dbContainer ? dbContainer.maxNormalCpu : 100,
             minNormalCpu: dbContainer ? dbContainer.minNormalCpu : 0,
             maxNormalMemory: dbContainer ? dbContainer.maxNormalMemory : 100,
-        };
-    }
-
-    static getContainerStatsArray(containerId: string, containers: ContainerData[], stats: ContainerUsageStats): ContainerUsageStats[]{
-        const container = containers.find(container => container.id === containerId);
-        return container ? container.stats.concat(stats): [stats]
         });
         const stats = await ContainerStatsBusinessLogic.getContainerStats(container._id, container.Id, host.name);
         savedContainer.stats = [stats];

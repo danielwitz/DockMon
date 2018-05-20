@@ -19,7 +19,7 @@ describe('NewHostComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should createHost', () => {
     expect(component).toBeTruthy();
   });
 });

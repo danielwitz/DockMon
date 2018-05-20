@@ -43,7 +43,7 @@ export class HostComponent {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes, deleteHost it!'
     }).then((result) => {
       if (result.value) {
         this.removeHostAction.emit(hostName);

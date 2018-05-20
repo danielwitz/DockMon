@@ -15,7 +15,7 @@ export async function runServer() {
             force: true
         });
         logger.info('db has been rebuilt!');
-        logger.info('create user');
+        logger.info('createHost user');
         await User.create({
             username: 'janedoe',
             birthday: new Date(1980, 6, 20)

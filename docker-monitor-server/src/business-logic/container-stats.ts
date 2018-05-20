@@ -2,6 +2,7 @@ import {ContainerUsageStats} from '../interface/container-stats';
 import {ContainerData} from '../interface/container-data';
 import {HostData} from '../interface/host-data';
 import {HostActionsBusinessLogic} from "./host-actions";
+import {Orm} from "../orm";
 
 let fetch = require('node-fetch');
 
@@ -11,11 +12,11 @@ const swarmServicesNames: string[] = [];
 export class ContainerStatsBusinessLogic {
     static async getDataFromAllHosts(): Promise<HostData[]> {
         const hosts = await HostActionsBusinessLogic.getHosts();
-        return Promise.all(hosts.map(host => ContainerStatsBusinessLogic.getAllHostContainersData(host)));
+        return await Promise.all(hosts.map(host => ContainerStatsBusinessLogic.getAllHostContainersData(host)));
     }
 
     static async getAllHostContainersData(host: HostData): Promise<HostData> {
-        let containers = await this.getAllHostContainers(host);
+        const containers = await this.getAllHostContainers(host);
         return await this.buildContainersData(containers, host);
     }
 
@@ -62,30 +63,29 @@ export class ContainerStatsBusinessLogic {
     }
 
     static async buildContainerData(container: any, host: HostData): Promise<ContainerData> {
-        let stats = await ContainerStatsBusinessLogic.getContainerStats(container.Id, host.name);
-        return {
+        let savedContainer = await Orm.updateContainer(container.Id, host._id, {
+            hostId: host._id,
             id: container.Id,
             name: container.Names[0],
-            stats: this.getContainerStatsArray(container.Id, host.containers, stats),
             status: container.Status,
             state: container.State,
-        };
+        });
+        const stats = await ContainerStatsBusinessLogic.getContainerStats(container._id, container.Id, host.name);
+        savedContainer.stats = [stats];
+        return savedContainer;
     }
 
-    static getContainerStatsArray(containerId: string, containers: ContainerData[], stats: ContainerUsageStats): ContainerUsageStats[]{
-        const container = containers.find(container => container.id === containerId);
-        return container ? container.stats.concat(stats): [stats]
-    }
-
-    static async getContainerStats(id: string, host: string): Promise<ContainerUsageStats> {
-        const data = await fetch(`http://${host}/containers/${id}/stats?stream=false`).then(res => res.json());
+    static async getContainerStats(container_id: string, containerId: string, host: string): Promise<ContainerUsageStats> {
+        const data = await fetch(`http://${host}/containers/${containerId}/stats?stream=false`).then(res => res.json());
         const memory = ContainerStatsBusinessLogic.calculateMemoryPercent(data.memory_stats);
         const cpu = ContainerStatsBusinessLogic.calculateCpuPercent(data.precpu_stats, data.cpu_stats)
-        return {
-            updateTime: new Date(),
-            memory: memory,
-            cpu: cpu
-        };
+        return await Orm.createContainerStats(
+            {
+                containerId: container_id,
+                updateTime: new Date(),
+                memory,
+                cpu
+            });
     }
 
     private static calculateMemoryPercent(memory_stats: any): number {

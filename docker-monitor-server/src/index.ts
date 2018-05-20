@@ -8,7 +8,6 @@ import {ContainerExtraDetailsApi} from './api/container-extra-details';
 import {HostActionsAPI} from './api/host-actions';
 import {Orm} from './orm';
 import {ContainerStatsBusinessLogic} from './business-logic/container-stats';
-import {Observable} from 'rxjs/Rx';
 
 const APPLICATION_PORT = process.env.DM_PORT ? process.env.DM_PORT : 1111;
 
@@ -31,6 +30,6 @@ Orm.init().then(() => {
 const importHosts = () => {
     setInterval(async () => {
         const hosts = await ContainerStatsBusinessLogic.getDataFromAllHosts();
-        return Promise.all(hosts.map(host => Orm.update(host.name, host)))
+        console.log(`imported hosts = ${JSON.stringify(hosts)}`)
     }, 6000);
 };

@@ -5,22 +5,16 @@ import {Orm} from '../orm';
 
 export class ContainerStatsAPI {
     static init(app: express.Application) {
-        app.get('/stats/getDataFromAllHosts', ContainerStatsAPI.getDataFromAllHosts);
         app.get('/stats/container/:hostName/:containerId', ContainerStatsAPI.getContainerStatsHistory)
     }
 
     static async getContainerStatsHistory(req, res): Promise<any> {
         const {hostName, containerId} = req.params;
-        const data = await Orm.retrieve();
-        const hostData = data.find(({name}) => name === hostName);
-        const container = hostData.containers.find(({id}) => id === containerId);
+        const {_id} = await Orm.retrieveHosts({name: hostName})[0];
+        const container = await Orm.retrieveContainers({id: containerId, hostId: _id})[0];
+        let historyFrom = new Date();
+        historyFrom.setHours(historyFrom.getHours() + 2);
+        container.stats = await Orm.retrieveStats({containerId: container._id, updateTime: { $gte: historyFrom}})
         res.send(container);
     }
-
-    static async getDataFromAllHosts(req: express.Request, res: express.Response): Promise<any> {
-        let data = await HostActionsBusinessLogic.getHosts();
-        res.send(data);
-    }
-
 }
-

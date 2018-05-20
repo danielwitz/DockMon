@@ -19,14 +19,16 @@ const container = new Schema({
     status: {type: String, required: true},
     state: {type: String, required: true},
     tags: {type: [String], required: false},
-    stats: {type: [containerStats], required: false}
+    maxNormalCpu: {type: Number, required: false},
+    minNormalCpu: {type: Number, required: false},
+    maxNormalMemory: {type: Number, required: false},
 });
 
 const host = new Schema({
     name: {type: String, required: true},
     nickname: {type: String, required: false},
     tags: {type: [String], required: false},
-    containers: {type: [container], required: false}
+    containers: {type: [container], required: false},
 });
 
 export const Host = mongoose.model<HostData>('host', host, 'hosts', true);

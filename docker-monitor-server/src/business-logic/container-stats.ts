@@ -69,6 +69,15 @@ export class ContainerStatsBusinessLogic {
             name: container.Names[0],
             status: container.Status,
             state: container.State,
+            maxNormalCpu: dbContainer ? dbContainer.maxNormalCpu : 100,
+            minNormalCpu: dbContainer ? dbContainer.minNormalCpu : 0,
+            maxNormalMemory: dbContainer ? dbContainer.maxNormalMemory : 100,
+        };
+    }
+
+    static getContainerStatsArray(containerId: string, containers: ContainerData[], stats: ContainerUsageStats): ContainerUsageStats[]{
+        const container = containers.find(container => container.id === containerId);
+        return container ? container.stats.concat(stats): [stats]
         });
         const stats = await ContainerStatsBusinessLogic.getContainerStats(container._id, container.Id, host.name);
         savedContainer.stats = [stats];

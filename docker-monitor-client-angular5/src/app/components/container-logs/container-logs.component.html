@@ -11,6 +11,9 @@
                            [showXAxisLabel]="lineChartShowXAxisLabel" [showYAxisLabel]="lineChartShowYAxisLabel"
                            [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="'memory'"
                            [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation"
+                           [referenceLines]="memoryRefLines"
+                           [showRefLines]="true"
+                           [showRefLabels]="true"
                            (select)="onSelect($event)"></ngx-charts-line-chart>
   </div>
   <div style="flex:1; height:500px;">
@@ -19,6 +22,9 @@
                            [showXAxisLabel]="lineChartShowXAxisLabel" [showYAxisLabel]="lineChartShowYAxisLabel"
                            [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="'cpu'"
                            [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation"
+                           [referenceLines]="cpuRefLines"
+                           [showRefLines]="true"
+                           [showRefLabels]="true"
                            (select)="onSelect($event)"></ngx-charts-line-chart>
   </div>
 </div>

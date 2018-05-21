@@ -34,6 +34,8 @@ export class ContainerLogsComponent implements OnInit {
 
   lineChartLineInterpolation = chartsData.lineChartLineInterpolation;
   selectedContainer: any;
+  memoryRefLines:any[];
+  cpuRefLines:any[];
 
   constructor(private store: Store<AppState>,
               private containersActionService: ContainersActionsService,
@@ -47,6 +49,17 @@ export class ContainerLogsComponent implements OnInit {
       const containerId = params['id'];
       this.containersStatsService.getContainerHistory(host, containerId).subscribe(data => {
         this.selectedContainer = data;
+        const averageMemory = arr => arr.reduce( ( accumulator, {memory} ) =>
+          accumulator + memory, 0 ) / arr.length;
+        this.memoryRefLines = [
+          {value: data.maxNormalMemory ? data.maxNormalMemory : averageMemory(data.stats), name: 'max normal memory'}
+        ];
+        const averageCpu = arr => arr.reduce( ( accumulator, {cpu} ) =>
+          accumulator + cpu, 0 ) / arr.length;
+        this.cpuRefLines = [
+          {value: data.minNormalCpu ? data.minNormalCpu : 0, name: 'min normal cpu'},
+          {value: data.maxNormalCpu ? data.maxNormalCpu : averageCpu(data.stats), name: 'max normal cpu'}
+        ];
         const memory = data.stats.map(({memory, updateTime}) => {
           return {name: updateTime, value: memory};
         });

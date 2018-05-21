@@ -10,10 +10,10 @@ export class ContainerStatsAPI {
 
     static async getContainerStatsHistory(req, res): Promise<any> {
         const {hostName, containerId} = req.params;
-        const {_id} = await Orm.retrieveHosts({name: hostName})[0];
-        const container = await Orm.retrieveContainers({id: containerId, hostId: _id})[0];
+        const [host] = await Orm.retrieveHosts({name: hostName});
+        const [container] = await Orm.retrieveContainers({id: containerId, hostId: host._id});
         let historyFrom = new Date();
-        historyFrom.setHours(historyFrom.getHours() + 2);
+        historyFrom.setHours(historyFrom.getHours() - 5);
         container.stats = await Orm.retrieveStats({containerId: container._id, updateTime: { $gte: historyFrom}})
         res.send(container);
     }

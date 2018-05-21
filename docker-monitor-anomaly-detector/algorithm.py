@@ -34,7 +34,7 @@ def detect_anomalies_with_isolation_forest(X, contamination=0.1):
                           contamination=contamination)
 
     columns = df.columns.tolist()
-    columns = [c for c in columns if c not in ["_id", "updateTime"]]
+    columns = [c for c in columns if c not in ["_id", "updateTime","containerId"]]
     outliers = []
     sanitizedColums = df[columns]
     if (not sanitizedColums.empty):
@@ -46,28 +46,27 @@ def detect_anomalies_with_isolation_forest(X, contamination=0.1):
     return df.index[outliers]
 
 
-def checkForUpdates(hosts):
+def checkForUpdates(stats,containers_db):
     print("asdasdas")
     containers = []
 
-    for host in hosts.find():
-        for container in host["containers"]:
-            containers.append(container)
+    df = pd.DataFrame(list(stats.find()))
+    grouped = df.groupby('containerId')
 
-    for container in containers:
-        relevantOutliers = []
-        containerId = container["id"]
-        df = pd.DataFrame(container["stats"])
+    for container in grouped :
+        df = container[1]
         df = df.dropna(0,'any')
         x = tabulate(df, headers='keys', tablefmt='psql')
         print(x)
-        outliers = detect_anomalies_with_isolation_forest(df)
-        relevantOutliers = getRelevantOutliers(outliers, df)
-        updateAnamolisInDb(relevantOutliers, hosts, containerId)
+
+        if (not len(df) ==0) :
+            outliers = detect_anomalies_with_isolation_forest(df)
+            relevantOutliers = getRelevantOutliers(outliers, df)
+            updateAnamolisInDb(relevantOutliers, container[0],containers_db)
 
 
 
-def updateAnamolisInDb(anamolys, collection, containerId):
+def updateAnamolisInDb(anamolys, containerId,containers):
     maxMemory = 557686786787578578;
     minCpu = 0.0;
     maxCpu = 234523542345235;
@@ -101,10 +100,10 @@ def updateAnamolisInDb(anamolys, collection, containerId):
             minCpu = cpu
 
     # updating the db
-    collection.update_one({"containers.id": containerId},
-                          {"$set": {"containers.$.maxNormalCpu": float(maxCpu),
-                                    "containers.$.minNormalCpu": float(minCpu),
-                                    "containers.$.maxNormalMemory": float(maxMemory)}})
+    containers.update_one({"_id": containerId},
+                          {"$set": {"maxNormalCpu": float(maxCpu),
+                                    "minNormalCpu": float(minCpu),
+                                    "maxNormalMemory": float(maxMemory)}})
     # print(collection.find_one({"containers.id" : containerId}))
 
 
@@ -139,12 +138,11 @@ class RepeatEvery(threading.Thread):
 
 client = MongoClient('mongodb://dockmon:bRX-SGD-DZQ-26o@ds111078.mlab.com:11078/dockmon')
 db = client['dockmon']
-collection = db.hosts
+stats_table = db.stats
+containers_table = db.containers
 # t=Timer(3.0,checkForUpdates())
 
 
-thread = RepeatEvery(3, checkForUpdates, collection)
+thread = RepeatEvery(3, checkForUpdates, stats_table, containers_table)
 print("starting")
 thread.start()
-
-#threading.Timer(10.0, checkForUpdates, args=(collection,)).start()

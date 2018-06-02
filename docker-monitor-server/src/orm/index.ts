@@ -145,9 +145,9 @@ export class Orm {
         }));
     }
 
-    static async updateContainer(id: string, hostId: string, item: ContainerData): Promise<ContainerData> {
+    static async updateContainer(name: string, hostId: string, item: ContainerData): Promise<ContainerData> {
         return new Promise<ContainerData>(((resolve, reject) => {
-            Container.findOneAndUpdate({id: id, hostId: hostId}, item, {upsert: true}, (error, result) => {
+            Container.findOneAndUpdate({name: name, hostId: hostId}, item, {upsert: true}, (error, result) => {
                 if (error) {
                     console.error(`update container failed: ${error.message}\n ${error}`);
                     reject(error);

@@ -32,8 +32,7 @@ export class HostsComponent {
   }
 
   selectContainer(containerToSelect: SelectedContainer) {
-    this.selectContainerService.selectContainer(containerToSelect);
-    this.router.navigate(['/logs', containerToSelect.hostName, containerToSelect.id]);
+    this.router.navigate(['/selectedContainer', containerToSelect.hostName, containerToSelect.id]);
   }
 
   trackByHostName(index: number, host: HostData): string {

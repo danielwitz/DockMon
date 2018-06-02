@@ -2,7 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import {HostComponent} from './components/host/host.component';
 import {ContainerLogsComponent} from './components/container-logs/container-logs.component';
 import {FixPipe} from './pipes/fix/fix.pipe';
@@ -34,6 +33,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { NewHostComponent } from './components/new-host/new-host.component';
 import { HostActionsService } from './services/host/host-actions.service';
 import { FilterPipe } from './pipes/search-host/search-host.pipe'
+import {ContainerDetailsComponent} from './components/container-details/container-details.component';
+import {SelectedContainerComponent} from './components/selected-container/selected-container.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,9 @@ import { FilterPipe } from './pipes/search-host/search-host.pipe'
     StateToStopped,
     NavComponent,
     NewHostComponent,
-    FilterPipe
+    FilterPipe,
+    SelectedContainerComponent,
+    ContainerDetailsComponent
   ],
   imports: [
     BrowserModule,

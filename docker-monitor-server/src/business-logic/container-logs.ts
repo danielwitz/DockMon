@@ -1,11 +1,11 @@
 import * as request from 'request';
 import {Log} from '../interface/log';
 
-const dateRegex = /(?=(?:0[1-9]|[12][0-9]|3[01])[\/-](?:0[1-9]|[12][0-9]|3[01])[\/-]\d{4}|\d{4}[\/-](?:0[1-9]|[12][0-9]|3[01])[\/-](?:0[1-9]|[12][0-9]|3[01]))/;
+const dateRegex = /(?=(?:[1-9]|0[1-9]|[12][0-9]|3[01])[\/-](?:[1-9]|0[1-9]|[12][0-9]|3[01])[\/-]\d{4}|\d{4}[\/-](?:[1-9]|0[1-9]|[12][0-9]|3[01])[\/-](?:[1-9]|0[1-9]|[12][0-9]|3[01]))/;
 const bashColorRegex = /\033\[[0-9;]*m/g;
 
 export class ContainerLogsBusinessLogic {
-    static getLogs(host, id, timestamp): Promise<Log[]> {
+    static getLogs(host: string, id: string, timestamp?: number): Promise<Log[]> {
         let since = timestamp ? timestamp : (Math.round(+new Date() / 1000)) - 300;
         return new Promise((resolve: any, reject: any) => {
             request.get({
@@ -30,14 +30,19 @@ export class ContainerLogsBusinessLogic {
                 message: message,
                 level: ContainerLogsBusinessLogic.getLogLevel(message)
             }));
+        console.log(`log was: ${logs}\n parsed logs are: ${JSON.stringify(parsedLogs)}`);
         return parsedLogs;
     }
 
-    private static getLogLevel(log): string {
-        if (log.includes('error')) {
+    private static getLogLevel(log: string): string {
+        const loweredCasedLog = log.toLowerCase();
+        if (loweredCasedLog.includes('warn')) {
+            return 'WARN';
+        }
+        else if (loweredCasedLog.includes('error')) {
             return 'ERROR';
         }
-        else if (log.includes('debug')) {
+        else if (loweredCasedLog.includes('debug')) {
             return 'DEBUG';
         }
         else {

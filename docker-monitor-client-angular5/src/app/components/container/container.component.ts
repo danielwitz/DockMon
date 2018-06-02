@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {Container} from '../../interfaces/container/container';
-import {CONTAINER_ACTIONS} from 'app/reducers/actions';
 import {ContainerActionData} from '../../interfaces/container/container-action-data';
 import {SelectedContainer} from '../../interfaces/container/selected-container';
+import {CONTAINER_ACTIONS} from '../../reducers/actions';
 
 @Component({
   selector: 'dm-container',

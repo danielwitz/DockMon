@@ -63,18 +63,19 @@ export class ContainerStatsBusinessLogic {
     }
 
     static async buildContainerData(container: any, host: HostData): Promise<ContainerData> {
-        const [dbContainer] = await Orm.retrieveContainers({id: container.Id, hostId: host._id});
-        let savedContainer = await Orm.updateContainer(container.Id, host._id, {
+        const containerName = container.Names[0];
+        const [dbContainer] = await Orm.retrieveContainers({name: containerName, hostId: host._id});
+        let savedContainer = await Orm.updateContainer(containerName, host._id, {
             hostId: host._id,
             id: container.Id,
-            name: container.Names[0],
+            name: containerName,
             status: container.Status,
             state: container.State,
             maxNormalCpu: dbContainer ? dbContainer.maxNormalCpu : 100,
             minNormalCpu: dbContainer ? dbContainer.minNormalCpu : 0,
             maxNormalMemory: dbContainer ? dbContainer.maxNormalMemory : 100,
         });
-        const stats = await ContainerStatsBusinessLogic.getContainerStats(container._id, container.Id, host.name);
+        const stats = await ContainerStatsBusinessLogic.getContainerStats(savedContainer._id, container.Id, host.name);
         savedContainer.stats = [stats];
         return savedContainer;
     }
@@ -87,8 +88,8 @@ export class ContainerStatsBusinessLogic {
             {
                 containerId: container_id,
                 updateTime: new Date(),
-                memory,
-                cpu
+                memory: isNaN(memory) ? 0 : memory,
+                cpu: isNaN(cpu) ? 0 : cpu
             });
     }
 

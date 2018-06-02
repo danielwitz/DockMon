@@ -13,7 +13,7 @@ export class ContainerStatsAPI {
         const [host] = await Orm.retrieveHosts({name: hostName});
         const [container] = await Orm.retrieveContainers({id: containerId, hostId: host._id});
         let historyFrom = new Date();
-        historyFrom.setHours(historyFrom.getHours() - 5);
+        historyFrom.setHours(historyFrom.getHours() - 100000);
         container.stats = await Orm.retrieveStats({containerId: container._id, updateTime: { $gte: historyFrom}})
         res.send(container);
     }

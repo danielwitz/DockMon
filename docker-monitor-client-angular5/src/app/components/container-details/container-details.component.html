@@ -1,0 +1,40 @@
+<div class="details">
+  <table *ngIf="details">
+    <tr class="container">
+      <td>Image</td>
+      <td>{{details.image}}</td>
+    </tr>
+    <tr class="container" *ngIf="details.portBindings && details.portBindings.length>0">
+      <td>Port Bindings</td>
+      <td>
+        <table>
+          <tr *ngFor="let portBinding of details.portBindings">
+            <td>Host Port : {{portBinding.hostPort}}</td>
+            <td class="fa fa-arrow-right fa-11x"></td>
+            <td>Container : {{portBinding.innerPort}}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr class="container" *ngIf="details.mounts && details.mounts.length>0">
+      <td>Mounts</td>
+      <td>
+        <table>
+          <tr *ngFor="let mount of details.mounts">
+            <td>Source : {{mount.source}}</td>
+            <td class="fa fa-arrow-right fa-11x"></td>
+            <td>Destination : {{mount.destination}}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr class="container" *ngIf="details.envParams && details.envParams.length>0">
+      <td>Env</td>
+      <td>
+        <table>
+          <tr *ngFor="let envParam of details.envParams">{{envParam}}</tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

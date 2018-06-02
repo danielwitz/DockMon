@@ -136,6 +136,10 @@ dm-hosts, dm-container-logs {
   border-bottom: grey solid 1px;
 }
 
+.selected-container{
+  max-height: 120px;
+}
+
 .info-log-color {
   color : #0af0fd;
 }

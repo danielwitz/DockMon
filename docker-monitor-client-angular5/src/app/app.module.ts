@@ -35,6 +35,7 @@ import { HostActionsService } from './services/host/host-actions.service';
 import { FilterPipe } from './pipes/search-host/search-host.pipe'
 import {ContainerDetailsComponent} from './components/container-details/container-details.component';
 import {SelectedContainerComponent} from './components/selected-container/selected-container.component';
+import { AddTagComponent } from './components/add-tag/add-tag.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {SelectedContainerComponent} from './components/selected-container/select
     NewHostComponent,
     FilterPipe,
     SelectedContainerComponent,
-    ContainerDetailsComponent
+    ContainerDetailsComponent,
+    AddTagComponent
   ],
   imports: [
     BrowserModule,

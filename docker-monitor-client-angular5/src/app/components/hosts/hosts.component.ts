@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 import {SelectedContainer} from '../../interfaces/container/selected-container';
 import {SelectContainerService} from '../../services/container/select-container.service';
 import {HostActionsService} from "../../services/host/host-actions.service";
+import {addTag} from "../../interfaces/add-tag/add-tag";
 
 @Component({
   selector: 'dm-hosts',
@@ -41,6 +42,10 @@ export class HostsComponent {
 
   removeHostByName(hostName: string): void {
     this.hostActionsService.removeHost(hostName);
+  }
+
+  addNewTag(tag: addTag): void {
+    this.hostActionsService.addTag(tag);
   }
 
   onFilterTextChanged(text:string){

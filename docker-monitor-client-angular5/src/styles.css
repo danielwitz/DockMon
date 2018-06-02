@@ -130,6 +130,13 @@ dm-hosts, dm-container-logs {
   /*min-width: 10em;*/
   border-bottom: 1px solid lightgray;
 }
+.details{
+  font-size: 15px;
+  font-weight: bold;
+  overflow-x: auto;
+  align-items: center;
+  justify-content: center;
+}
 
 .container-logs {
   font-size: 15px;
@@ -141,7 +148,7 @@ dm-hosts, dm-container-logs {
 }
 
 .info-log-color {
-  color : #0af0fd;
+  color : #1221fd;
 }
 
 .debug-log-color {

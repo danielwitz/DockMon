@@ -8,30 +8,39 @@
   </dm-container>
   <dm-container-details class="fcol" [details]="details|async"></dm-container-details>
 </div>
-<div style="display: flex; flex-direction: row;">
-  <div style="flex: 1; height:500px;">
-    <ngx-charts-line-chart [scheme]="lineChartColorScheme" [results]="lineChartMulti" [gradient]="lineChartGradient"
-                           [xAxis]="lineChartShowXAxis" [yAxis]="lineChartShowYAxis" [legend]="lineChartShowLegend"
-                           [showXAxisLabel]="lineChartShowXAxisLabel" [showYAxisLabel]="lineChartShowYAxisLabel"
-                           [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="'memory'"
-                           [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation"
-                           [referenceLines]="memoryRefLines"
-                           [showRefLines]="true"
-                           [showRefLabels]="true"
-                           (select)="onSelect($event)"></ngx-charts-line-chart>
+<div style="display: flex;flex-direction: column; height:700px; justify-content: flex-start; overflow-y: auto;">
+  <div style="flex-direction: row;flex-wrap: wrap;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;">
+    <div style="flex: 1; height:500px;width:550px;">
+      <ngx-charts-line-chart [scheme]="lineChartColorScheme" [results]="lineChartMulti" [gradient]="lineChartGradient"
+                             [xAxis]="lineChartShowXAxis" [yAxis]="lineChartShowYAxis" [legend]="lineChartShowLegend"
+                             [showXAxisLabel]="lineChartShowXAxisLabel" [showYAxisLabel]="lineChartShowYAxisLabel"
+                             [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="'memory'"
+                             [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation"
+                             [referenceLines]="memoryRefLines"
+                             [showRefLines]="true"
+                             [showRefLabels]="true"
+                             (select)="onSelect($event)"></ngx-charts-line-chart>
+    </div>
+    <div style="flex:1; height:500px; width:550px;">
+      <ngx-charts-line-chart [scheme]="lineChartColorScheme" [results]="lineChartMultiCpu"
+                             [gradient]="lineChartGradient"
+                             [xAxis]="lineChartShowXAxis" [yAxis]="lineChartShowYAxis" [legend]="lineChartShowLegend"
+                             [showXAxisLabel]="lineChartShowXAxisLabel" [showYAxisLabel]="lineChartShowYAxisLabel"
+                             [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="'cpu'"
+                             [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation"
+                             [referenceLines]="cpuRefLines"
+                             [showRefLines]="true"
+                             [showRefLabels]="true"
+                             (select)="onSelect($event)"></ngx-charts-line-chart>
+    </div>
   </div>
-  <div style="flex:1; height:500px;">
-    <ngx-charts-line-chart [scheme]="lineChartColorScheme" [results]="lineChartMultiCpu" [gradient]="lineChartGradient"
-                           [xAxis]="lineChartShowXAxis" [yAxis]="lineChartShowYAxis" [legend]="lineChartShowLegend"
-                           [showXAxisLabel]="lineChartShowXAxisLabel" [showYAxisLabel]="lineChartShowYAxisLabel"
-                           [xAxisLabel]="lineChartXAxisLabel" [yAxisLabel]="'cpu'"
-                           [autoScale]="lineChartAutoScale" [curve]="lineChartLineInterpolation"
-                           [referenceLines]="cpuRefLines"
-                           [showRefLines]="true"
-                           [showRefLabels]="true"
-                           (select)="onSelect($event)"></ngx-charts-line-chart>
+  <div class="row flx1">
+    <dm-container-logs [logs]="logs|async"></dm-container-logs>
   </div>
-</div>
-<div class="row flx1">
-  <dm-container-logs [logs]="logs|async"></dm-container-logs>
 </div>

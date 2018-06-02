@@ -1,6 +1,6 @@
 <div class="fcol wrp">
   <app-nav (searchTextChanged)="onFilterTextChanged($event)"></app-nav>
-  <div style="display: flex; align-items:start;">
+  <div style="display: flex; height:600px; align-items:start;overflow-y: auto;">
     <dm-host class="server t-m l-m col strc grow"
              *ngFor="let host of hosts | async | filter:filterText"
              [host]="host"

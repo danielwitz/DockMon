@@ -23,14 +23,24 @@ export class ContainerLogsBusinessLogic {
 
     private static parseLogs(logs): Log[] {
         let parsedLogs = [];
-        logs.replace(bashColorRegex, '').split('\n').map((line) =>
-            line.slice(8, line.length)).join('')
-            .split(dateRegex)
-            .map((message) => parsedLogs.push({
-                message: message,
-                level: ContainerLogsBusinessLogic.getLogLevel(message)
-            }));
-        console.log(`log was: ${logs}\n parsed logs are: ${JSON.stringify(parsedLogs)}`);
+        let cleanedLogs = logs.replace(bashColorRegex, '');
+        if (dateRegex.test(cleanedLogs)) {
+            cleanedLogs.split('\n').map((line) =>
+                line.slice(8, line.length)).join('')
+                .split(dateRegex)
+                .map((message) => parsedLogs.push({
+                    message: message,
+                    level: ContainerLogsBusinessLogic.getLogLevel(message)
+                }));
+        }
+        else {
+            cleanedLogs.split('\n').map((line) =>
+                line.slice(8, line.length))
+                .map((message) => parsedLogs.push({
+                    message: message,
+                    level: ContainerLogsBusinessLogic.getLogLevel(message)
+                }));
+        }
         return parsedLogs;
     }
 

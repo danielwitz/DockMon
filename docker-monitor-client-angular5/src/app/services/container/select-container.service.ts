@@ -42,12 +42,10 @@ export class SelectContainerService {
   }
 
   private getLogs(host: string, containerId: string): Observable<Log[]> {
-    return this.http.get(`${this.logsApiUrl}/${host}/${containerId}`).map((res: any) =>
-      JSON.parse(res._body));
+    return this.http.get<Log[]>(`${this.logsApiUrl}/${host}/${containerId}`);
   }
 
   private getDetails(host: string, containerId: string): Observable<Details> {
-    return this.http.get(`${this.detailsApiUrl}/${host}/${containerId}`).map((res: any) =>
-      JSON.parse(res._body));
+    return this.http.get<Details>(`${this.detailsApiUrl}/${host}/${containerId}`);
   }
 }

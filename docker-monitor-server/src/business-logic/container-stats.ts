@@ -71,9 +71,9 @@ export class ContainerStatsBusinessLogic {
             name: containerName,
             status: container.Status,
             state: container.State,
-            maxNormalCpu: dbContainer ? dbContainer.maxNormalCpu : 100,
-            minNormalCpu: dbContainer ? dbContainer.minNormalCpu : 0,
-            maxNormalMemory: dbContainer ? dbContainer.maxNormalMemory : 100,
+            maxNormalCpu: dbContainer ? dbContainer.maxNormalCpu : null,
+            minNormalCpu: dbContainer ? dbContainer.minNormalCpu : null,
+            maxNormalMemory: dbContainer ? dbContainer.maxNormalMemory : null,
         });
         const stats = await ContainerStatsBusinessLogic.getContainerStats(savedContainer._id, container.Id, host.name);
         savedContainer.stats = [stats];
@@ -88,8 +88,8 @@ export class ContainerStatsBusinessLogic {
             {
                 containerId: container_id,
                 updateTime: new Date(),
-                memory: isNaN(memory) ? 0 : memory,
-                cpu: isNaN(cpu) ? 0 : cpu
+                memory: isNaN(memory) || memory < 0 ? 0 : memory,
+                cpu: isNaN(cpu) || cpu < 0 ? 0 : cpu
             });
     }
 

@@ -1,6 +1,8 @@
 FROM node:alpine
 WORKDIR /usr/src/app
+COPY package.json .
+RUN yarn
 COPY . .
-RUN yarn && yarn build
+RUN yarn build
 EXPOSE 8080
 CMD [ "yarn", "start" ]

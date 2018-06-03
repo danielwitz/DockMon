@@ -27,9 +27,8 @@ export class ContainersStatsService {
 
   updateHosts(hostsData: HostData[]): void {
     this.store.dispatch(new UpdateHostsAction(hostsData));
-    let tags = [];
-    tags = hostsData.map(host => tags.concat(host.tags));
-    this.store.dispatch(new UpdateTagsAction(tags[0]));
+    let tags = hostsData.reduce((accu, host)=>[...accu, host.tags], []);
+    this.store.dispatch(new UpdateTagsAction(tags));
   }
 
   getContainerHistory(hostName: string, containerId: string) {

@@ -8,6 +8,7 @@ services:
     image: "nicom93/dockmon-tester"
     environment:
       port: 8080
+      hardAmount: 20000
     depends_on:
       - postgres
     links:
@@ -15,7 +16,23 @@ services:
   simulator:
     image: "nicom93/dockmon-tester-simulator"
     environment:
-      interval: 500
+      interval: 800
       webServerPort: 8080
+    depends_on:
+      - web
+  web2:
+    image: "nicom93/dockmon-tester"
+    environment:
+      port: 8081
+      hardAmount: 5000
+    depends_on:
+      - postgres
+    links:
+      - postgres
+  simulator2:
+    image: "nicom93/dockmon-tester-simulator"
+    environment:
+      interval: 400
+      webServerPort: 8081
     depends_on:
       - web

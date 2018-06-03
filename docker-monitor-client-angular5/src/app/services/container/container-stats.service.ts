@@ -27,7 +27,7 @@ export class ContainersStatsService {
 
   updateHosts(hostsData: HostData[]): void {
     this.store.dispatch(new UpdateHostsAction(hostsData));
-    let tags = hostsData.reduce((accu, host)=>[...accu, host.tags], []);
+    let tags = hostsData.reduce((accu, host) => [...accu, ...host.tags], []);
     this.store.dispatch(new UpdateTagsAction(tags));
   }
 

@@ -34,7 +34,6 @@ export class NavComponent {
   }
 
   isChecked(tagName: string): boolean {
-    debugger;
     return this.filterTags.includes(tagName);
   }
 }

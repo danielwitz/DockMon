@@ -19,6 +19,7 @@ export class HostsComponent {
   hosts: Observable<HostData[]>;
   tags: Observable<string[]>;
   filterText: string;
+  tagFilter: string[] = [];
 
   constructor(private containersActionService: ContainersActionsService,
               private selectContainerService: SelectContainerService,
@@ -48,6 +49,10 @@ export class HostsComponent {
 
   onFilterTextChanged(text: string) {
     this.filterText = text;
+  }
+
+  onFilterTagChanged(tags: string[]) {
+    this.tagFilter = tags;
   }
 
   addNewTag(tag: addTag): void {

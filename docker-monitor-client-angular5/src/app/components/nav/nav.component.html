@@ -1,7 +1,14 @@
 <div class="nav server ph-l b-m no-shrink">
+
   <div>
     <span style="order: 0;">DockMon</span>
     <a style="order: 1" routerLink="/newHost"> <i class="fas fa-plus"></i> </a>
+  </div>
+  <div class="row">
+    <span class=" t-m">Tags:</span>
+    <div class="col t-m wrp click" style="height: 70px">
+      <span class="l-m" style="font-size: 19px;" *ngFor="let tag of tags" [class.selected-tag]="isChecked(tag)" (click)="onclickTag(tag)">{{tag}}</span>
+    </div>
   </div>
   <div>
     <form class="searchBox" style="order: 2; margin-top: 6px; flex-grow: 8">

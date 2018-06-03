@@ -17,7 +17,9 @@ import {addTag} from "../../interfaces/add-tag/add-tag";
 })
 export class HostsComponent {
   hosts: Observable<HostData[]>;
+  tags: Observable<string[]>;
   filterText: string;
+  tagFilter: string[] = [];
 
   constructor(private containersActionService: ContainersActionsService,
               private selectContainerService: SelectContainerService,
@@ -25,6 +27,7 @@ export class HostsComponent {
               private store: Store<AppState>,
               private router: Router) {
     this.hosts = this.store.select<HostData[]>((state: AppState) => state.hosts);
+    this.tags = this.store.select<string[]>((state: AppState) => state.tags);
   }
 
   onContainerAction(containerActionData: ContainerActionData) {
@@ -44,11 +47,16 @@ export class HostsComponent {
     this.hostActionsService.removeHost(hostName);
   }
 
+  onFilterTextChanged(text: string) {
+    this.filterText = text;
+  }
+
+  onFilterTagChanged(tags: string[]) {
+    this.tagFilter = tags;
+  }
+
   addNewTag(tag: addTag): void {
     this.hostActionsService.addTag(tag);
   }
 
-  onFilterTextChanged(text:string){
-    this.filterText = text;
-  }
 }

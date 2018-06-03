@@ -1,8 +1,9 @@
 <div class="fcol wrp">
-  <app-nav (searchTextChanged)="onFilterTextChanged($event)"></app-nav>
+  <app-nav (searchTextChanged)="onFilterTextChanged($event)" (tagsToFilter)="onFilterTagChanged($event)"
+           [tags]="tags | async"></app-nav>
   <div style="display: flex;">
     <dm-host class="server t-m l-m col strc grow"
-             *ngFor="let host of hosts | async | filter:filterText"
+             *ngFor="let host of hosts | async | filter:filterText: tagFilter"
              [host]="host"
              [style.order]="host.containers?.length"
              (containerAction)="onContainerAction($event)"

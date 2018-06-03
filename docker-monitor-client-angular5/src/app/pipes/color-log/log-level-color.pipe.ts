@@ -11,7 +11,7 @@ export class LogLevelToColorPipe implements PipeTransform {
       case 'ERROR':
         return 'error-log-color';
       default :
-        break;
+        return 'info-log-color';
     }
   }
 }

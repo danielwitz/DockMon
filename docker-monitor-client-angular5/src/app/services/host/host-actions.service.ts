@@ -34,6 +34,7 @@ export class HostActionsService {
   addTag(tag: addTag): void {
     let hostName = tag.hostName;
     let tagName = tag.tagName;
-    this.http.post(this.addTagToURL, {hostName, tagName}).subscribe(() => this.containersStatsService.refreshHosts());
+    let nickName = tag.nickName;
+    this.http.post(this.addTagToURL, {hostName, tagName, nickName}).subscribe(() => this.containersStatsService.refreshHosts());
   }
 }

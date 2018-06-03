@@ -14,7 +14,7 @@
       <div>
   <span>
     <b class="fa-18x">DNS Tags Names:</b>
-    <span *ngFor="let tagHost of host.tags" class="fa-15x">{{tagHost}}</span>
+    <span *ngFor="let tagHost of host.tags" class="fa-15x">{{tagHost + " "}}</span>
         </span>
       </div>
     </div>
@@ -29,7 +29,7 @@
   </span>
     </div>
   </div>
-  <add-tag [hostName]="host.name" *ngIf="isEditTag" (newTagEmitter)="addTagAction($event)"></add-tag>
+  <add-tag [hostName]="host.nickname" *ngIf="isEditTag" (newTagEmitter)="addTagAction($event)"></add-tag>
   <div style="height: 600px; overflow-y: auto">
     <dm-container #cnt class="container col strc p-s"
                   *ngFor="let container of host.containers | sortByField:'nickname'; trackBy:trackByContainerId"

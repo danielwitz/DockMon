@@ -45,12 +45,16 @@ export class HostComponent {
   }
 
   addTagAction(tagName: string): void {
-    let tag: addTag = {
-      tagName: tagName,
-      hostName: this.host.name
-    };
+    this.isEditTag = false;
 
-    this.addTagEmitter.emit(tag);
+    if (tagName && tagName !== "") {
+      let tag: addTag = {
+        tagName: tagName,
+        nickName: this.host.nickname,
+        hostName: this.host.name
+      };
+      this.addTagEmitter.emit(tag);
+    }
   }
 
   removeHost(hostName: string): void {

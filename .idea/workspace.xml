@@ -3,13 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="843603bb-9d26-4e01-878b-d87cb027c037" name="Default" comment="logs and details">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/app.module.ts" afterPath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/app.module.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.html" afterPath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.ts" afterPath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/hosts/hosts.component.html" afterPath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/hosts/hosts.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/hosts/hosts.component.ts" afterPath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/hosts/hosts.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/host/host-actions.service.ts" afterPath="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/host/host-actions.service.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-monitor-client-angular5/src/styles.css" afterPath="$PROJECT_DIR$/docker-monitor-client-angular5/src/styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-monitor-server/src/api/host-actions.ts" afterPath="$PROJECT_DIR$/docker-monitor-server/src/api/host-actions.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-monitor-server/src/business-logic/host-actions.ts" afterPath="$PROJECT_DIR$/docker-monitor-server/src/business-logic/host-actions.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,12 +25,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="add-tag.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.ts">
+      <file leaf-file-name="container-stats.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/business-logic/container-stats.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
-              <folding />
+            <state relative-caret-position="321">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!block;n#getAllHostContainers#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+                <element signature="e#964#1076#0" expanded="false" />
+                <element signature="e#1091#1142#0" expanded="false" />
+                <element signature="n#!!block;n#getAllSwarmContainersData#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+                <element signature="n#!!block;n#getFilteredHostContainersData#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+                <element signature="n#!!block;n#getRunningHostContainers#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+                <element signature="e#2209#2341#0" expanded="false" />
+                <element signature="e#2356#2407#0" expanded="false" />
+                <element signature="n#!!block;n#isValidContainer#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+                <element signature="e#3266#3664#0" expanded="false" />
+                <element signature="n#!!block;n#getContainerStats#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+                <element signature="e#4366#4558#0" expanded="false" />
+                <element signature="n#!!block;n#calculateMemoryPercent#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+                <element signature="n#!!block;n#calculateCpuPercent#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/hosts/hosts.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="400">
-              <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+              <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -48,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hosts.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="hosts.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/hosts/hosts.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="47" column="38" lean-forward="false" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+            <state relative-caret-position="631">
+              <caret line="47" column="31" lean-forward="false" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -61,8 +75,20 @@
       <file leaf-file-name="host-actions.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/host/host-actions.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="851">
-              <caret line="33" column="8" lean-forward="false" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="8" />
+            <state relative-caret-position="871">
+              <caret line="38" column="3" lean-forward="false" selection-start-line="38" selection-start-column="3" selection-end-line="38" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add-tag.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="12" column="6" lean-forward="false" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -71,67 +97,51 @@
       <file leaf-file-name="host.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="31" column="74" lean-forward="false" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="74" />
+            <state relative-caret-position="331">
+              <caret line="31" column="78" lean-forward="false" selection-start-line="31" selection-start-column="78" selection-end-line="31" selection-end-column="78" />
               <folding>
-                <element signature="n#span#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-                <element signature="n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="meta.d.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/@angular/platform-browser/src/browser/meta.d.ts">
+      <file leaf-file-name="host-actions.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/business-logic/host-actions.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+            <state relative-caret-position="563">
+              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="host.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add-tag.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/add-tag/add-tag.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="details.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/details/details.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="host-data.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/host/host-data.ts">
+        <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/interface/host-data.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="6" />
+            <state relative-caret-position="80">
+              <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="host-actions.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/api/host-actions.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="451">
+              <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add-tag.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="491">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -151,7 +161,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>background</find>
       <find>nickname</find>
       <find>buildContainersData</find>
       <find>dnsName</find>
@@ -166,7 +175,6 @@
       <find>right</find>
       <find>display: flex;</find>
       <find>server</find>
-      <find>flex</find>
       <find>marg</find>
       <find>serverNickname</find>
       <find>serverTitle</find>
@@ -181,6 +189,8 @@
       <find>warnin</find>
       <find>scroll</find>
       <find>log</find>
+      <find>flex</find>
+      <find>console.log</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -206,7 +216,6 @@
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/host-actions.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/container/host-actions.service.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-server/src/api/container-actions.ts" />
-        <option value="$PROJECT_DIR$/docker-monitor-server/src/api/host-actions.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/container/container-stats.service.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/package.json" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/package-lock.json" />
@@ -219,7 +228,6 @@
         <option value="$PROJECT_DIR$/docker-monitor-server/src/interface/host-data.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-server/src/interface/container-stats.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-server/src/index.ts" />
-        <option value="$PROJECT_DIR$/docker-monitor-server/src/business-logic/host-actions.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-server/src/interface/container-data.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-server/src/api/doAction.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/reducers/build-state-and-reducers-functions.ts" />
@@ -227,27 +235,29 @@
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/state/app-reducers.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/reducers/actions.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/routes/routes.ts" />
+        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/hosts/hosts.component.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/container/container.component.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/container-logs/container-logs.component.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/container-logs/container-logs.component.html" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-server/src/api/container-stats.ts" />
-        <option value="$PROJECT_DIR$/docker-monitor-server/src/orm/index.ts" />
-        <option value="$PROJECT_DIR$/docker-monitor-server/src/business-logic/container-stats.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/selected-container/selected-container.component.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/container/select-container.service.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/selected-container/selected-container.component.html" />
-        <option value="$PROJECT_DIR$/docker-monitor-server/src/business-logic/container-logs.ts" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.html" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/styles.css" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.ts" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.html" />
-        <option value="/AngularJS Fragment (hosts.component.html:578).js" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/hosts/hosts.component.html" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/addTag/add-tag.ts" />
+        <option value="$PROJECT_DIR$/docker-monitor-server/src/business-logic/container-logs.ts" />
+        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.css" />
+        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.html" />
+        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.ts" />
+        <option value="$PROJECT_DIR$/docker-monitor-server/src/business-logic/container-stats.ts" />
+        <option value="$PROJECT_DIR$/docker-monitor-server/src/orm/index.ts" />
+        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/styles.css" />
+        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.html" />
+        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/add-tag/add-tag.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.ts" />
+        <option value="$PROJECT_DIR$/docker-monitor-server/src/api/host-actions.ts" />
+        <option value="$PROJECT_DIR$/docker-monitor-server/src/business-logic/host-actions.ts" />
         <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/host/host-actions.service.ts" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/hosts/hosts.component.ts" />
       </list>
     </option>
   </component>
@@ -333,6 +343,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="add-tag" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DockMon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DockMon" type="462c0819:PsiDirectoryNode" />
+              <item name="docker-monitor-client-angular5" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="host" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -367,15 +386,6 @@
               <item name="docker-monitor-client-angular5" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
-              <item name="details" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DockMon" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DockMon" type="462c0819:PsiDirectoryNode" />
-              <item name="docker-monitor-client-angular5" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -387,6 +397,38 @@
               <item name="services" type="462c0819:PsiDirectoryNode" />
               <item name="host" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="DockMon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DockMon" type="462c0819:PsiDirectoryNode" />
+              <item name="docker-monitor-server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DockMon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DockMon" type="462c0819:PsiDirectoryNode" />
+              <item name="docker-monitor-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DockMon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DockMon" type="462c0819:PsiDirectoryNode" />
+              <item name="docker-monitor-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DockMon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DockMon" type="462c0819:PsiDirectoryNode" />
+              <item name="docker-monitor-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="business-logic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DockMon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DockMon" type="462c0819:PsiDirectoryNode" />
+              <item name="docker-monitor-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="interface" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -397,7 +439,7 @@
   <component name="PropertiesComponent">
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blackend/docker-monitor-client" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
@@ -433,7 +475,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.Unnamed">
+    <configuration name="Unnamed" type="js.build_tools.npm" factoryName="npm">
+      <package-json value="$PROJECT_DIR$/docker-monitor-server/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="debug" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
     <configuration name="run server" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" path-to-js-file="index.js" working-dir="$PROJECT_DIR$/docker-monitor-server/build">
       <method>
         <option name="NpmBeforeRunTask" enabled="true">
@@ -447,6 +498,10 @@
         </option>
       </method>
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.run server" />
+      <item index="1" class="java.lang.String" itemvalue="npm.Unnamed" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -470,7 +525,7 @@
       <workItem from="1525532355911" duration="3308000" />
       <workItem from="1526853162753" duration="6817000" />
       <workItem from="1527860785024" duration="16517000" />
-      <workItem from="1527963366191" duration="3517000" />
+      <workItem from="1527967042904" duration="12478000" />
     </task>
     <task id="LOCAL-00001" summary="display hostname and nickname,&#10;add new host option on view and service">
       <created>1524904452214</created>
@@ -546,21 +601,22 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99461000" />
+    <option name="totallyTimeSpent" value="108422000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2530343" sideWeight="0.88259786" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2530343" sideWeight="0.49708575" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294249" sideWeight="0.5010554" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66402537" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.49895832" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294249" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3294249" sideWeight="0.49894458" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2530343" sideWeight="0.117402166" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39936608" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39921832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2530343" sideWeight="0.50291425" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -568,36 +624,11 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66402537" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-hasmetadata.js.map" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-getmetadata.js" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-definemetadata.js" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-decorate.js.map" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-getmetadata.js.map" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-getownmetadatakeys.js.map" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-getownmetadatakeys.js" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-hasownmetadata.js" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-metadata.js.map" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-definemetadata.js.map" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-getownmetadata.js.map" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-hasownmetadata.js.map" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-deletemetadata.js" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-getmetadatakeys.js.map" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-decorate.js" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-metadata.js" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-deletemetadata.js.map" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-getmetadatakeys.js" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-hasmetadata.js" />
-        <option value="$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/reflect-metadata/test/reflect-getownmetadata.js" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -636,7 +667,7 @@
           <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="62" />
+      <option name="time" value="65" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="NodeJSConfigurationType">
@@ -711,73 +742,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/api/container-actions.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-526">
-          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/api/container-extra-details.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/details/mount.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/log/log.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/state/app-state.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/state/app-reducers.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="64" lean-forward="false" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/reducers/build-state-and-reducers-functions.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="21" column="31" lean-forward="false" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/reducers/details-reducer.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/reducers/actions.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/routes/routes.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
@@ -790,6 +754,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#47#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-629">
+          <caret line="35" column="45" lean-forward="false" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -811,40 +786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-198">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/api/container-stats.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="15" column="60" lean-forward="false" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/api/host-actions.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="28" column="66" lean-forward="false" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/business-logic/host-actions.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="24" column="7" lean-forward="false" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/orm/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="788">
-          <caret line="147" column="37" lean-forward="false" selection-start-line="147" selection-start-column="37" selection-end-line="147" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -859,6 +800,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/container/container.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -884,21 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/business-logic/container-stats.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="66" column="30" lean-forward="false" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/container/container-stats.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/business-logic/container-extra-details.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -907,16 +841,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/container/select-container.service.ts">
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/font-awesome/css/font-awesome.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="48" column="82" lean-forward="false" selection-start-line="48" selection-start-column="82" selection-end-line="48" selection-end-column="82" />
+        <state relative-caret-position="118">
+          <caret line="3" column="6582" lean-forward="false" selection-start-line="3" selection-start-column="6582" selection-end-line="3" selection-end-column="6582" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/font-awesome/css/font-awesome.min.css" />
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/font-awesome/css/font-awesome.css" />
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/font-awesome/css/font-awesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="463" column="11" lean-forward="false" selection-start-line="463" selection-start-column="11" selection-end-line="463" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/container-details/container-details.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -928,19 +868,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="5" column="49" lean-forward="true" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/selected-container/selected-container.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="10" column="111" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="111" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -960,20 +888,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-server/node_modules/mongoose/lib/schema.js" />
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/styles.css">
+    <entry file="file://$PROJECT_DIR$/docker-monitor-server/node_modules/mongoose/lib/schema.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="754" column="0" lean-forward="false" selection-start-line="754" selection-start-column="0" selection-end-line="754" selection-end-column="0" />
+        <state relative-caret-position="1456">
+          <caret line="696" column="0" lean-forward="false" selection-start-line="696" selection-start-column="0" selection-end-line="696" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/business-logic/container-logs.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="26" column="8" lean-forward="false" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+        <state relative-caret-position="720">
+          <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/nav/nav.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/new-host/new-host.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-589">
+          <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/new-host/new-host.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -982,106 +936,137 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#73#0" expanded="true" />
+            <element signature="e#0#73#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/app.module.ts">
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/selected-container/selected-container.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="60" column="18" lean-forward="false" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="383">
+          <caret line="10" column="49" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/container/container.component.ts">
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/new-host/new-host.component.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1229">
-          <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        <state relative-caret-position="160">
+          <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/node_modules/@angular/platform-browser/src/browser/meta.d.ts">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/sectional.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+        <state relative-caret-position="383">
+          <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.ts">
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/container/select-container.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1031">
+          <caret line="48" column="82" lean-forward="false" selection-start-line="48" selection-start-column="82" selection-end-line="48" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/reducers/hosts-reducer.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
-          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#54#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/reducers/actions.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="21" column="2" lean-forward="false" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/api/container-stats.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="15" column="57" lean-forward="false" selection-start-line="15" selection-start-column="57" selection-end-line="15" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/host/host-data.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="6" />
+        <state relative-caret-position="80">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/details/details.ts">
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/container/container-stats.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="171">
+          <caret line="27" column="26" lean-forward="false" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.html">
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/reducers/build-state-and-reducers-functions.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="31" column="74" lean-forward="false" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="74" />
-          <folding>
-            <element signature="n#span#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="640">
+          <caret line="21" column="31" lean-forward="false" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.ts">
+    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/index.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        <state relative-caret-position="791">
+          <caret line="31" column="56" lean-forward="false" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/orm/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="60" column="17" lean-forward="false" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="748" column="18" lean-forward="false" selection-start-line="748" selection-start-column="18" selection-end-line="748" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/interfaces/add-tag/add-tag.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+        <state relative-caret-position="80">
+          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/host/host-actions.service.ts">
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="851">
-          <caret line="33" column="8" lean-forward="false" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="8" />
+        <state relative-caret-position="363">
+          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1089,7 +1074,7 @@
     <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/hosts/hosts.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
-          <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
@@ -1098,8 +1083,92 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/hosts/hosts.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="47" column="38" lean-forward="false" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+        <state relative-caret-position="631">
+          <caret line="47" column="31" lean-forward="false" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/add-tag/add-tag.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="12" column="6" lean-forward="false" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/business-logic/container-stats.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#getAllHostContainers#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+            <element signature="e#964#1076#0" expanded="false" />
+            <element signature="e#1091#1142#0" expanded="false" />
+            <element signature="n#!!block;n#getAllSwarmContainersData#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+            <element signature="n#!!block;n#getFilteredHostContainersData#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+            <element signature="n#!!block;n#getRunningHostContainers#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+            <element signature="e#2209#2341#0" expanded="false" />
+            <element signature="e#2356#2407#0" expanded="false" />
+            <element signature="n#!!block;n#isValidContainer#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+            <element signature="e#3266#3664#0" expanded="false" />
+            <element signature="n#!!block;n#getContainerStats#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+            <element signature="e#4366#4558#0" expanded="false" />
+            <element signature="n#!!block;n#calculateMemoryPercent#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+            <element signature="n#!!block;n#calculateCpuPercent#0;n#ContainerStatsBusinessLogic#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/components/host/host.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="31" column="78" lean-forward="false" selection-start-line="31" selection-start-column="78" selection-end-line="31" selection-end-column="78" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/interface/host-data.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/api/host-actions.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-client-angular5/src/app/services/host/host-actions.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="871">
+          <caret line="38" column="3" lean-forward="false" selection-start-line="38" selection-start-column="3" selection-end-line="38" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-monitor-server/src/business-logic/host-actions.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
           <folding />
         </state>
       </provider>

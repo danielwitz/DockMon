@@ -740,7 +740,6 @@ body > app-root > dm-hosts > div > app-nav > div > a {
 
 #serverTitle {
   display: flex;
-  height: 50px;
 }
 
 #serverDetails {
@@ -752,6 +751,8 @@ body > app-root > dm-hosts > div > app-nav > div > a {
 
 #removeImage {
   cursor: pointer;
+  margin-top: 20px;
+  margin-right: 15px;
 }
 
 #addTag {

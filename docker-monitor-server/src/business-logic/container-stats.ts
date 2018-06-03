@@ -73,7 +73,6 @@ export class ContainerStatsBusinessLogic {
             state: container.State,
             tags: dbContainer.tags,
             maxNormalCpu: dbContainer ? dbContainer.maxNormalCpu : null,
-            minNormalCpu: dbContainer ? dbContainer.minNormalCpu : null,
             maxNormalMemory: dbContainer ? dbContainer.maxNormalMemory : null,
         });
         const stats = await ContainerStatsBusinessLogic.getContainerStats(savedContainer._id, container.Id, host.name);

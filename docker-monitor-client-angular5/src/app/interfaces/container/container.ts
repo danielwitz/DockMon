@@ -8,6 +8,5 @@ export interface Container {
   stats: ContainerUsageStats[];
   tags?: string[];
   maxNormalCpu? : number;
-  minNormalCpu? : number;
   maxNormalMemory? : number;
 }

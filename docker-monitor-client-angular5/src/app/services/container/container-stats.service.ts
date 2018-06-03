@@ -8,6 +8,7 @@ import {AppState} from '../../interfaces/state/app-state';
 import {UpdateHostsAction, UpdateTagsAction} from '../../reducers/actions';
 import {HostData} from '../../interfaces/host/host-data';
 import {HttpClient} from '@angular/common/http';
+import * as _ from 'lodash';
 
 @Injectable()
 export class ContainersStatsService {
@@ -28,6 +29,7 @@ export class ContainersStatsService {
   updateHosts(hostsData: HostData[]): void {
     this.store.dispatch(new UpdateHostsAction(hostsData));
     let tags = hostsData.reduce((accu, host) => [...accu, ...host.tags], []);
+    tags = _.uniq(tags);
     this.store.dispatch(new UpdateTagsAction(tags));
   }
 

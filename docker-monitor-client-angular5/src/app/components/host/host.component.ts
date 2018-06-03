@@ -47,7 +47,7 @@ export class HostComponent {
   addTagAction(tagName: string): void {
     this.isEditTag = false;
 
-    if (tagName && tagName !== "") {
+    if (tagName && tagName !== "" && !this.host.tags.includes(tagName)) {
       let tag: addTag = {
         tagName: tagName,
         nickName: this.host.nickname,

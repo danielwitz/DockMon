@@ -6,6 +6,7 @@ import {Details} from "../details/details";
 export interface AppState {
   hosts: HostData[],
   containerLogs: Log[],
+  tags: string[],
   selectedContainer: SelectedContainer
   containerDetails: Details
 }

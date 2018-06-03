@@ -2,6 +2,10 @@
   <div>
     <span style="order: 0;">DockMon</span>
     <a style="order: 1" routerLink="/newHost"> <i class="fas fa-plus"></i> </a>
+    <span>Tags</span>
+    <div class="col">
+      <span *ngFor="let tag of tags">{{tag}}</span>
+    </div>
   </div>
   <div>
     <form class="searchBox" style="order: 2; margin-top: 6px; flex-grow: 8">

@@ -16,6 +16,7 @@ import {HostActionsService} from "../../services/host/host-actions.service";
 })
 export class HostsComponent {
   hosts: Observable<HostData[]>;
+  tags: Observable<string[]>;
   filterText: string;
 
   constructor(private containersActionService: ContainersActionsService,
@@ -24,6 +25,7 @@ export class HostsComponent {
               private store: Store<AppState>,
               private router: Router) {
     this.hosts = this.store.select<HostData[]>((state: AppState) => state.hosts);
+    this.tags = this.store.select<string[]>((state: AppState) => state.tags);
   }
 
   onContainerAction(containerActionData: ContainerActionData) {
@@ -43,7 +45,7 @@ export class HostsComponent {
     this.hostActionsService.removeHost(hostName);
   }
 
-  onFilterTextChanged(text:string){
+  onFilterTextChanged(text: string) {
     this.filterText = text;
   }
 }

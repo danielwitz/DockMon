@@ -13,8 +13,10 @@ export const CONTAINER_ACTIONS = {
   restartContainer: 'restart',
   viewLogs: 'viewLogs',
   selectContainer: 'select',
-  viewDetails: 'viewDetails'
-}
+  viewDetails: 'viewDetails',
+  addTag: 'addTag',
+  updateTags: 'updateTags'
+};
 
 export class UpdateHostsAction implements Action {
   readonly type = HOST_ACTION.updateStats;
@@ -41,6 +43,20 @@ export class ViewContainerDetailsAction implements Action {
   readonly type = CONTAINER_ACTIONS.viewDetails;
 
   constructor(public payload?: Details) {
+  }
+}
+
+export class TagsAction implements Action {
+  readonly type = CONTAINER_ACTIONS.addTag;
+
+  constructor(public payload?: string[]) {
+  }
+}
+
+export class UpdateTagsAction implements Action {
+  readonly type = CONTAINER_ACTIONS.updateTags;
+
+  constructor(public payload?: string[]) {
   }
 }
 

@@ -2,6 +2,8 @@ import {HostData} from "../interface/host-data";
 import {Orm} from "../orm";
 
 export class HostActionsBusinessLogic {
+    private static hostsTags = [];
+
     static async addNewHost(dnsHostName: string, nickname: string): Promise<HostData> {
         return await Orm.createHost({
             name: `${dnsHostName}:2375`,
@@ -14,12 +16,29 @@ export class HostActionsBusinessLogic {
         return await Orm.deleteHost(dnsHostName);
     }
 
+    static addTag(hostName: string, tagName: string, nickName: string): void {
+        HostActionsBusinessLogic.hostsTags.push({
+            hostName: hostName,
+            tagName: tagName,
+            nickName: nickName
+        });
+    }
+
     static async getHosts(): Promise<HostData[]> {
-        return  await Orm.retrieveHosts();
+        let hosts: HostData[] = await Orm.retrieveHosts();
+        HostActionsBusinessLogic.hostsTags.forEach(host => {
+            for (let currHost of hosts) {
+                if (host.hostName === currHost.name && host.nickName === currHost.nickname) {
+                    currHost.tags.push(host.tagName);
+                }
+            }
+        });
+
+        return hosts;
     }
 
     static async getHostsWithCurrentContainerStats(): Promise<HostData[]> {
-        const hosts = await Orm.retrieveHosts();
+        const hosts = await HostActionsBusinessLogic.getHosts();
         const hostsPromises = hosts.map(async host => {
             const containers = await Orm.retrieveContainers({hostId: host._id});
             const containerPromises = containers.map(async container => {
@@ -30,7 +49,7 @@ export class HostActionsBusinessLogic {
             return host;
         });
 
-        const result =  await Promise.all(hostsPromises);
+        const result = await Promise.all(hostsPromises);
         return result;
     }
 }

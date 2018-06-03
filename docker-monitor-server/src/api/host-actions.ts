@@ -1,15 +1,15 @@
 import * as express from 'express';
 import {HostActionsBusinessLogic} from "../business-logic/host-actions";
-import {HostData} from "../interface/host-data";
 
 export class HostActionsAPI {
-    static init(app:express.Application) {
+    static init(app: express.Application) {
         app.post('/addHost', HostActionsAPI.addNewHost);
         app.post('/removeHost', HostActionsAPI.removeHost);
+        app.post('/addTag', HostActionsAPI.addTag);
         app.get('/hosts', HostActionsAPI.getHosts);
     }
 
-    static addNewHost(req:express.Request, res:express.Response): void {
+    static addNewHost(req: express.Request, res: express.Response): void {
         if (req.body.dnsHostName && req.body.nickname) {
             HostActionsBusinessLogic.addNewHost(req.body.dnsHostName, req.body.nickname);
         } else {
@@ -17,7 +17,7 @@ export class HostActionsAPI {
         }
     }
 
-    static removeHost(req:express.Request, res:express.Response): void {
+    static removeHost(req: express.Request, res: express.Response): void {
         if (req.body.dnsHostName) {
             HostActionsBusinessLogic.removeHost(req.body.dnsHostName);
         } else {
@@ -25,8 +25,16 @@ export class HostActionsAPI {
         }
     }
 
-    static async getHosts(req: express.Request, res: express.Response): Promise<any>{
-        const hosts =  await HostActionsBusinessLogic.getHostsWithCurrentContainerStats();
+    static addTag(req: express.Request, res: express.Response): void {
+        if (req.body.hostName && req.body.tagName && req.body.nickName) {
+            HostActionsBusinessLogic.addTag(req.body.hostName, req.body.tagName, req.body.nickName);
+        } else {
+            res.send('Error! did not add tag');
+        }
+    }
+
+    static async getHosts(req: express.Request, res: express.Response): Promise<any> {
+        const hosts = await HostActionsBusinessLogic.getHostsWithCurrentContainerStats();
         res.send(hosts);
     }
 }

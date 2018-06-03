@@ -116,7 +116,6 @@ dm-hosts, dm-container-logs {
   background-color: #7781c8;
 }
 
-
 .server > .scroll {
   /*max-height: 300px;*/
 }
@@ -130,7 +129,8 @@ dm-hosts, dm-container-logs {
   /*min-width: 10em;*/
   border-bottom: 1px solid lightgray;
 }
-.details{
+
+.details {
   font-size: 15px;
   font-weight: bold;
   overflow-x: auto;
@@ -143,20 +143,20 @@ dm-hosts, dm-container-logs {
   border-bottom: grey solid 1px;
 }
 
-.selected-container{
+.selected-container {
   max-height: 120px;
 }
 
 .info-log-color {
-  color : #1221fd;
+  color: #1221fd;
 }
 
 .debug-log-color {
-  color : #24d22c;
+  color: #24d22c;
 }
 
 .error-log-color {
-  color : #ff1100;
+  color: #ff1100;
 }
 
 .state-box {
@@ -740,19 +740,23 @@ body > app-root > dm-hosts > div > app-nav > div > a {
 
 #serverTitle {
   display: flex;
-  height: 50px;
 }
 
-#serverDetails{
+#serverDetails {
   display: flex;
   flex-direction: column;
   margin-left: 15px;
   margin-top: 5px;
 }
 
+#removeImage {
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 15px;
+}
 
-#removeImage{
-  cursor:pointer;
+#addTag {
+  cursor: pointer;
   margin: 15px;
 }
 
@@ -791,7 +795,7 @@ form.searchBox::after {
   display: table;
 }
 
-.fcol{
+.fcol {
   justify-content: space-around;
   align-content: flex-start;
 }

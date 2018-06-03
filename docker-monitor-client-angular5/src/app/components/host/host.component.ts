@@ -4,6 +4,7 @@ import {HostData} from '../../interfaces/host/host-data';
 import {ContainerActionData} from '../../interfaces/container/container-action-data';
 import {SelectedContainer} from '../../interfaces/container/selected-container';
 import {Container} from '../../interfaces/container/container';
+import {addTag} from "../../interfaces/add-tag/add-tag";
 
 @Component({
   selector: 'dm-host',
@@ -16,11 +17,15 @@ export class HostComponent {
   @Output() containerAction: EventEmitter<ContainerActionData>;
   @Output() selectContainer: EventEmitter<SelectedContainer>;
   @Output() removeHostAction: EventEmitter<string>;
+  @Output() addTagEmitter: EventEmitter<addTag>;
+  isEditTag: boolean;
 
   constructor() {
     this.containerAction = new EventEmitter<ContainerActionData>();
     this.selectContainer = new EventEmitter<SelectedContainer>();
     this.removeHostAction = new EventEmitter<string>();
+    this.addTagEmitter = new EventEmitter<addTag>();
+    this.isEditTag = false;
   }
 
   dispatchContainerAction(containerActionData: ContainerActionData) {
@@ -33,6 +38,23 @@ export class HostComponent {
 
   trackByContainerId(index: number, container: Container): string {
     return container ? container.name : null;
+  }
+
+  enterEditTag(): void {
+    this.isEditTag = true;
+  }
+
+  addTagAction(tagName: string): void {
+    this.isEditTag = false;
+
+    if (tagName && tagName !== "") {
+      let tag: addTag = {
+        tagName: tagName,
+        nickName: this.host.nickname,
+        hostName: this.host.name
+      };
+      this.addTagEmitter.emit(tag);
+    }
   }
 
   removeHost(hostName: string): void {

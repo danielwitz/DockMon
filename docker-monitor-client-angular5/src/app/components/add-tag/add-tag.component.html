@@ -1,0 +1,17 @@
+<div style="display: flex; flex-direction: column;">
+  <div style="display: flex; flex-direction: row; justify-content: space-between">
+    <h1>Add new tag to {{hostName}} </h1>
+    <span style="cursor: pointer">
+      <i class="fas fa-times fa-1x" style="background-color: #393f62;" (click)="close()"></i>
+    </span>
+  </div>
+  <div>
+    <input [class.errorTagName]="tagInputError"
+           [class.customInput]="!tagInputError"
+           type="text" [(ngModel)]="tagName" placeholder="Tag name... ">
+  </div>
+  <div>
+    <button (click)="addNewTag()">Add tag</button>
+  </div>
+
+</div>

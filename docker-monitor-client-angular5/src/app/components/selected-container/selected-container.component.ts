@@ -80,7 +80,6 @@ export class SelectedContainerComponent implements OnInit {
         const averageCpu = arr => arr.reduce((accumulator, {cpu}) =>
           accumulator + cpu, 0) / arr.length;
         this.cpuRefLines = [
-          {value: data.minNormalCpu ? data.minNormalCpu : 0, name: 'min normal cpu'},
           {value: data.maxNormalCpu ? data.maxNormalCpu : averageCpu(data.stats), name: 'max normal cpu'}
         ];
         const memory = data.stats.map(({memory, updateTime}) => {

@@ -31,7 +31,6 @@ export class ContainerComponent implements OnChanges {
     }
 
     if((currentValue.maxNormalCpu <= currentValue.stats.cpu)||
-      (currentValue.minNormalCpu >= currentValue.stats.cpu) ||
       (currentValue.maxNormalMemory <= currentValue.stats.memory)) {
       this.warning = true;
     } else {

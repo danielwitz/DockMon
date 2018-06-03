@@ -16,7 +16,9 @@ MISSING_VALUES_REPRESENTATION = 'NaN'  # indicates which types are considered as
 ISOLATION_FOREST_N_ESTIMATORS = 100  # [int > 0] isolation forest is used for removing outliers in data
 
 threading.current_thread().name = 'MainThread'
-def detect_anomalies_with_isolation_forest(X, contamination=0.1):
+
+
+def detect_anomalies_with_isolation_forest(X, contamination=0.15):
     """
     given a pandas DataFrame returns outliers indexes using isolation forest to detect outliers.
 
@@ -34,7 +36,7 @@ def detect_anomalies_with_isolation_forest(X, contamination=0.1):
                           contamination=contamination)
 
     columns = df.columns.tolist()
-    columns = [c for c in columns if c not in ["_id", "updateTime","containerId"]]
+    columns = [c for c in columns if c not in ["_id", "updateTime", "containerId"]]
     outliers = []
     sanitizedColums = df[columns]
     if (not sanitizedColums.empty):
@@ -46,45 +48,52 @@ def detect_anomalies_with_isolation_forest(X, contamination=0.1):
     return df.index[outliers]
 
 
-def checkForUpdates(stats,containers_db):
+def checkForUpdates(stats, containers_db):
     print("asdasdas")
     containers = []
 
     df = pd.DataFrame(list(stats.find()))
     grouped = df.groupby('containerId')
 
-    for container in grouped :
-        df = container[1]
-        df = df.dropna(0,'any')
-        x = tabulate(df, headers='keys', tablefmt='psql')
+    for container in grouped:
+        dfc = container[1]
+        dfc = dfc.dropna(0, 'any')
+        x = tabulate(dfc, headers='keys', tablefmt='psql')
         print(x)
 
-        if (not len(df) ==0) :
-            outliers = detect_anomalies_with_isolation_forest(df)
-            relevantOutliers = getRelevantOutliers(outliers, df)
-            updateAnamolisInDb(relevantOutliers, container[0],containers_db)
+        if (not len(dfc) == 0):
+            outliers = detect_anomalies_with_isolation_forest(dfc)
+            relevantOutliers = getRelevantOutliers(outliers, dfc)
+            updateAnamolisInDb(relevantOutliers, container[0], containers_db)
 
 
-
-def updateAnamolisInDb(anamolys, containerId,containers):
+def updateAnamolisInDb(anamolys, containerId, containers):
     maxMemory = 557686786787578578;
     minCpu = 0.0;
     maxCpu = 234523542345235;
     avgCpu = 0;
     avgMemory = 0;
+    max_cpu_outlier =0.0;
+    max_memory_outlier =0.0;
+    min_cpu_outlier=1238;
+    min_memory_outlier=557686786787578578;
     # x = tabulate(anamolys, headers='keys', tablefmt='psql')
     # print(x)
 
     # calculate average
-    for anomalie in anamolys:
-        avgCpu += anomalie["cpu"]
-        avgMemory += anomalie["memory"]
+    for anamolie in anamolys :
+        cpu_ = float(anamolie["cpu"])
+        memory_ = anamolie["memory"]
+        max_cpu_outlier = cpu_ if cpu_ > max_cpu_outlier else max_cpu_outlier
+        min_cpu_outlier = cpu_ if cpu_ < min_cpu_outlier else min_cpu_outlier
+        max_memory_outlier = memory_ if memory_ > max_memory_outlier else max_memory_outlier
+        min_memory_outlier = memory_ if memory_ < min_memory_outlier else min_memory_outlier
 
-    rowsAmount = len(anamolys)
-    if not rowsAmount == 0:
-        avgMemory = avgMemory / rowsAmount
-        avgCpu = avgCpu / rowsAmount
-    else:
+
+    avgCpu = (max_cpu_outlier + min_cpu_outlier) /2
+    avgMemory = (max_memory_outlier + min_memory_outlier) / 2
+
+    if avgCpu == 0:
         avgCpu = 0.4
         avgMemory = 1
 
@@ -96,13 +105,10 @@ def updateAnamolisInDb(anamolys, containerId,containers):
             maxMemory = memory
         if (cpu < maxCpu and cpu > avgCpu):
             maxCpu = cpu
-        if (cpu > minCpu and cpu < avgCpu):
-            minCpu = cpu
 
     # updating the db
     containers.update_one({"_id": containerId},
                           {"$set": {"maxNormalCpu": float(maxCpu),
-                                    "minNormalCpu": float(minCpu),
                                     "maxNormalMemory": float(maxMemory)}})
     # print(collection.find_one({"containers.id" : containerId}))
 
@@ -124,14 +130,16 @@ class RepeatEvery(threading.Thread):
     def __init__(self, interval, func, *args, **kwargs):
         threading.Thread.__init__(self)
         self.interval = interval  # seconds between calls
-        self.func = func          # function to call
-        self.args = args          # optional positional argument(s) for call
-        self.kwargs = kwargs      # optional keyword argument(s) for call
+        self.func = func  # function to call
+        self.args = args  # optional positional argument(s) for call
+        self.kwargs = kwargs  # optional keyword argument(s) for call
         self.runable = True
+
     def run(self):
         while self.runable:
             self.func(*self.args, **self.kwargs)
             time.sleep(self.interval)
+
     def stop(self):
         self.runable = False
 

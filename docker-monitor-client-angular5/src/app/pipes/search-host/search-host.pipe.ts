@@ -6,7 +6,7 @@ import {isNullOrUndefined} from "util";
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-  transform(hostsData: HostData[], searchText: string, tags: string[]): any[] {
+  transform(hostsData: HostData[], searchText: string, tags: string[]): HostData[] {
     if (!hostsData) return [];
     let hosts = hostsData;
    // if (!searchText && isNullOrUndefined(tags)) return hostsData;

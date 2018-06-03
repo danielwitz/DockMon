@@ -24,7 +24,8 @@ export class NavComponent {
 
   onclickTag(tagName: string) {
     if (!this.filterTags.includes(tagName)) {
-      this.filterTags.push(tagName);
+      this.filterTags = [...this.filterTags, tagName];
+
     }
     else {
       this.filterTags = this.filterTags.filter(tag => tag !== tagName);

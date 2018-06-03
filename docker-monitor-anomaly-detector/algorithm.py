@@ -18,7 +18,7 @@ ISOLATION_FOREST_N_ESTIMATORS = 100  # [int > 0] isolation forest is used for re
 threading.current_thread().name = 'MainThread'
 
 
-def detect_anomalies_with_isolation_forest(X, contamination=0.15):
+def detect_anomalies_with_isolation_forest(X, contamination=0.1):
     """
     given a pandas DataFrame returns outliers indexes using isolation forest to detect outliers.
 

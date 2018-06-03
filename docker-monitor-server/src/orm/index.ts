@@ -159,6 +159,20 @@ export class Orm {
         }));
     }
 
+    static async updateHost(name: string, nickname: string, item: HostData): Promise<HostData> {
+        return new Promise<HostData>(((resolve, reject) => {
+            Host.findOneAndUpdate({name: name, nickname:nickname}, item, {upsert: true}, (error, result) => {
+                if (error) {
+                    console.error(`update host failed: ${error.message}\n ${error}`);
+                    reject(error);
+                }
+                else {
+                    resolve(result);
+                }
+            });
+        }));
+    }
+
     static async deleteHost(name: string): Promise<any> {
         return new Promise<any>(((resolve, reject) => {
             Host.findOneAndRemove({name: name}, (error, result) => {

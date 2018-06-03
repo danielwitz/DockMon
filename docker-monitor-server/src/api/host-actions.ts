@@ -25,9 +25,11 @@ export class HostActionsAPI {
         }
     }
 
-    static addTag(req: express.Request, res: express.Response): void {
+    static async addTag(req: express.Request, res: express.Response): Promise<any> {
         if (req.body.hostName && req.body.tagName && req.body.nickName) {
-            HostActionsBusinessLogic.addTag(req.body.hostName, req.body.tagName, req.body.nickName);
+            const updatedHost = await HostActionsBusinessLogic.addTag(req.body.hostName,
+                req.body.tagName, req.body.nickName);
+            res.send(updatedHost);
         } else {
             res.send('Error! did not add tag');
         }

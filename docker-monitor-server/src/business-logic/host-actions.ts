@@ -16,12 +16,10 @@ export class HostActionsBusinessLogic {
         return await Orm.deleteHost(dnsHostName);
     }
 
-    static addTag(hostName: string, tagName: string, nickName: string): void {
-        HostActionsBusinessLogic.hostsTags.push({
-            hostName: hostName,
-            tagName: tagName,
-            nickName: nickName
-        });
+    static async addTag(hostName: string, tagName: string, nickname: string): Promise<HostData> {
+        let [dbHost] = await Orm.retrieveHosts({name:hostName, nickname: nickname});
+        dbHost.tags = [...dbHost.tags, tagName];
+        return await Orm.updateHost(hostName, nickname, dbHost)
     }
 
     static async getHosts(): Promise<HostData[]> {
